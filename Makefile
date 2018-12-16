@@ -1,5 +1,5 @@
-SOURCE_DIR=$(PWD)/ChibiOS_18.2.1
-MAKEFILE_DIR=demos/STM32/RT-STM32F407-DISCOVERY-G++
+SOURCE_DIR=$(PWD)
+MAKEFILE_DIR=ProjectFormula
 help: ## === Tools for building and deploying firmware to STM32F407Discovery board ===
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
