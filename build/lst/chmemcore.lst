@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cck7poLS.s 			page 1
+ARM GAS  /tmp/ccxKKk99.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
   55 0020 00000000 		.word	.LANCHOR0
   56 0024 00000000 		.word	.LANCHOR1
   57              		.cfi_endproc
-ARM GAS  /tmp/cck7poLS.s 			page 2
+ARM GAS  /tmp/ccxKKk99.s 			page 2
 
 
   58              	.LFE7:
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  112              		.cfi_endproc
  113              	.LFE9:
  114              		.size	chCoreAllocI, .-chCoreAllocI
-ARM GAS  /tmp/cck7poLS.s 			page 3
+ARM GAS  /tmp/ccxKKk99.s 			page 3
 
 
  115              		.section	.text.chCoreAlloc,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  169              		.size	chCoreAlloc, .-chCoreAlloc
  170              		.section	.text.chCoreStatus,"ax",%progbits
  171              		.align	2
-ARM GAS  /tmp/cck7poLS.s 			page 4
+ARM GAS  /tmp/ccxKKk99.s 			page 4
 
 
  172              		.p2align 4,,15
@@ -238,11 +238,11 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  226 000b 01       		.uleb128 0x1
  227 000c 2A010000 		.4byte	.LASF27
  228 0010 01       		.byte	0x1
-ARM GAS  /tmp/cck7poLS.s 			page 5
+ARM GAS  /tmp/ccxKKk99.s 			page 5
 
 
  229 0011 07000000 		.4byte	.LASF28
- 230 0015 06020000 		.4byte	.LASF29
+ 230 0015 E6010000 		.4byte	.LASF29
  231 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
  232 001d 00000000 		.4byte	0
  233 0021 00000000 		.4byte	.Ldebug_line0
@@ -262,7 +262,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  247 003e 04       		.uleb128 0x4
  248 003f 01       		.byte	0x1
  249 0040 06       		.byte	0x6
- 250 0041 86020000 		.4byte	.LASF1
+ 250 0041 90020000 		.4byte	.LASF1
  251 0045 03       		.uleb128 0x3
  252 0046 35000000 		.4byte	.LASF3
  253 004a 03       		.byte	0x3
@@ -275,7 +275,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  260 0057 04       		.uleb128 0x4
  261 0058 02       		.byte	0x2
  262 0059 05       		.byte	0x5
- 263 005a 67020000 		.4byte	.LASF5
+ 263 005a 71020000 		.4byte	.LASF5
  264 005e 04       		.uleb128 0x4
  265 005f 02       		.byte	0x2
  266 0060 07       		.byte	0x7
@@ -283,7 +283,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  268 0065 04       		.uleb128 0x4
  269 0066 04       		.byte	0x4
  270 0067 05       		.byte	0x5
- 271 0068 7D020000 		.4byte	.LASF7
+ 271 0068 87020000 		.4byte	.LASF7
  272 006c 03       		.uleb128 0x3
  273 006d DA000000 		.4byte	.LASF8
  274 0071 03       		.byte	0x3
@@ -296,9 +296,9 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  281 007e 04       		.uleb128 0x4
  282 007f 08       		.byte	0x8
  283 0080 05       		.byte	0x5
- 284 0081 E6010000 		.4byte	.LASF10
+ 284 0081 51020000 		.4byte	.LASF10
  285 0085 04       		.uleb128 0x4
-ARM GAS  /tmp/cck7poLS.s 			page 6
+ARM GAS  /tmp/ccxKKk99.s 			page 6
 
 
  286 0086 08       		.byte	0x8
@@ -317,7 +317,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  299 00a2 04       		.uleb128 0x4
  300 00a3 01       		.byte	0x1
  301 00a4 02       		.byte	0x2
- 302 00a5 92020000 		.4byte	.LASF14
+ 302 00a5 9C020000 		.4byte	.LASF14
  303 00a9 05       		.uleb128 0x5
  304 00aa 04       		.byte	0x4
  305 00ab 04       		.uleb128 0x4
@@ -327,7 +327,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  309 00b2 04       		.uleb128 0x4
  310 00b3 01       		.byte	0x1
  311 00b4 08       		.byte	0x8
- 312 00b5 F4010000 		.4byte	.LASF16
+ 312 00b5 5F020000 		.4byte	.LASF16
  313 00b9 06       		.uleb128 0x6
  314 00ba 04       		.byte	0x4
  315 00bb 8C000000 		.4byte	0x8c
@@ -346,7 +346,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  328 00da 44       		.byte	0x44
  329 00db EB000000 		.4byte	0xeb
  330 00df 08       		.uleb128 0x8
- 331 00e0 F9010000 		.4byte	.LASF18
+ 331 00e0 64020000 		.4byte	.LASF18
  332 00e4 01       		.byte	0x1
  333 00e5 45       		.byte	0x45
  334 00e6 EB000000 		.4byte	0xeb
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  340 00f5 00       		.byte	0
  341 00f6 0B       		.uleb128 0xb
  342 00f7 7F000000 		.4byte	.LASF19
-ARM GAS  /tmp/cck7poLS.s 			page 7
+ARM GAS  /tmp/ccxKKk99.s 			page 7
 
 
  343 00fb 01       		.byte	0x1
@@ -386,7 +386,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  365 0130 10020000 		.4byte	0x210
  366 0134 00       		.byte	0
  367 0135 0B       		.uleb128 0xb
- 368 0136 71020000 		.4byte	.LASF20
+ 368 0136 7B020000 		.4byte	.LASF20
  369 013a 01       		.byte	0x1
  370 013b 5B       		.byte	0x5b
  371 013c A9000000 		.4byte	0xa9
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  397 017e 01       		.uleb128 0x1
  398 017f 53       		.byte	0x53
  399 0180 00       		.byte	0
-ARM GAS  /tmp/cck7poLS.s 			page 8
+ARM GAS  /tmp/ccxKKk99.s 			page 8
 
 
  400 0181 11       		.uleb128 0x11
@@ -478,14 +478,14 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  454 01f6 00000000 		.4byte	endmem
  455 01fa 08       		.uleb128 0x8
  456 01fb 1C010000 		.4byte	.LASF17
-ARM GAS  /tmp/cck7poLS.s 			page 9
+ARM GAS  /tmp/ccxKKk99.s 			page 9
 
 
  457 01ff 01       		.byte	0x1
  458 0200 44       		.byte	0x44
  459 0201 EB000000 		.4byte	0xeb
  460 0205 08       		.uleb128 0x8
- 461 0206 F9010000 		.4byte	.LASF18
+ 461 0206 64020000 		.4byte	.LASF18
  462 020a 01       		.byte	0x1
  463 020b 45       		.byte	0x45
  464 020c EB000000 		.4byte	0xeb
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  511 001f 16       		.uleb128 0x16
  512 0020 00       		.byte	0
  513 0021 03       		.uleb128 0x3
-ARM GAS  /tmp/cck7poLS.s 			page 10
+ARM GAS  /tmp/ccxKKk99.s 			page 10
 
 
  514 0022 0E       		.uleb128 0xe
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  568 0058 18       		.uleb128 0x18
  569 0059 9742     		.uleb128 0x2117
  570 005b 19       		.uleb128 0x19
-ARM GAS  /tmp/cck7poLS.s 			page 11
+ARM GAS  /tmp/ccxKKk99.s 			page 11
 
 
  571 005c 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  625 0092 40       		.uleb128 0x40
  626 0093 18       		.uleb128 0x18
  627 0094 9742     		.uleb128 0x2117
-ARM GAS  /tmp/cck7poLS.s 			page 12
+ARM GAS  /tmp/ccxKKk99.s 			page 12
 
 
  628 0096 19       		.uleb128 0x19
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  682 00ce 34       		.uleb128 0x34
  683 00cf 00       		.byte	0
  684 00d0 03       		.uleb128 0x3
-ARM GAS  /tmp/cck7poLS.s 			page 13
+ARM GAS  /tmp/ccxKKk99.s 			page 13
 
 
  685 00d1 08       		.uleb128 0x8
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  739 010c 19       		.uleb128 0x19
  740 010d 49       		.uleb128 0x49
  741 010e 13       		.uleb128 0x13
-ARM GAS  /tmp/cck7poLS.s 			page 14
+ARM GAS  /tmp/ccxKKk99.s 			page 14
 
 
  742 010f 11       		.uleb128 0x11
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  796 0016 16000000 		.4byte	.LVL2
  797 001a 1E000000 		.4byte	.LVL4
  798 001e 0100     		.2byte	0x1
-ARM GAS  /tmp/cck7poLS.s 			page 15
+ARM GAS  /tmp/ccxKKk99.s 			page 15
 
 
  799 0020 53       		.byte	0x53
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  853              	.LLST3:
  854 009a 16000000 		.4byte	.LVL10
  855 009e 19000000 		.4byte	.LVL11-1
-ARM GAS  /tmp/cck7poLS.s 			page 16
+ARM GAS  /tmp/ccxKKk99.s 			page 16
 
 
  856 00a2 0100     		.2byte	0x1
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  905              	.LASF28:
  906 0007 2E2E2F2E 		.ascii	"../../ChibiOS_2.6.5/os/kernel/src/chmemcore.c\000"
  906      2E2F4368 
-ARM GAS  /tmp/cck7poLS.s 			page 17
+ARM GAS  /tmp/ccxKKk99.s 			page 17
 
 
  906      6962694F 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  928      6E7400
  929              	.LASF13:
  930 00c3 75696E74 		.ascii	"uint32_t\000"
-ARM GAS  /tmp/cck7poLS.s 			page 18
+ARM GAS  /tmp/ccxKKk99.s 			page 18
 
 
  930      33325F74 
@@ -1078,75 +1078,77 @@ ARM GAS  /tmp/cck7poLS.s 			page 1
  949      6E6F2D63 
  950              	.LASF15:
  951 01dd 73697A65 		.ascii	"sizetype\000"
-ARM GAS  /tmp/cck7poLS.s 			page 19
+ARM GAS  /tmp/ccxKKk99.s 			page 19
 
 
  951      74797065 
  951      00
- 952              	.LASF10:
- 953 01e6 6C6F6E67 		.ascii	"long long int\000"
- 953      206C6F6E 
- 953      6720696E 
- 953      7400
- 954              	.LASF16:
- 955 01f4 63686172 		.ascii	"char\000"
+ 952              	.LASF29:
+ 953 01e6 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
+ 953      652F6E61 
+ 953      6D763139 
+ 953      39342F43 
+ 953      46534431 
+ 954 0219 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC (back"
+ 954      3246342F 
+ 954      656D6265 
+ 954      64646564 
+ 954      2F436869 
+ 955 024c 75703929 		.ascii	"up9)\000"
  955      00
- 956              	.LASF18:
- 957 01f9 5F5F6865 		.ascii	"__heap_end__\000"
- 957      61705F65 
- 957      6E645F5F 
- 957      00
- 958              	.LASF29:
- 959 0206 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
- 959      652F6E61 
- 959      6D763139 
- 959      39342F43 
- 959      46534431 
- 960 0239 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC\000"
- 960      3246342F 
- 960      656D6265 
- 960      64646564 
- 960      2F436869 
- 961              	.LASF5:
- 962 0267 73686F72 		.ascii	"short int\000"
- 962      7420696E 
- 962      7400
- 963              	.LASF20:
- 964 0271 6368436F 		.ascii	"chCoreAlloc\000"
- 964      7265416C 
- 964      6C6F6300 
- 965              	.LASF7:
- 966 027d 6C6F6E67 		.ascii	"long int\000"
- 966      20696E74 
- 966      00
- 967              	.LASF1:
- 968 0286 7369676E 		.ascii	"signed char\000"
- 968      65642063 
- 968      68617200 
- 969              	.LASF14:
- 970 0292 5F426F6F 		.ascii	"_Bool\000"
- 970      6C00
- 971              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/cck7poLS.s 			page 20
+ 956              	.LASF10:
+ 957 0251 6C6F6E67 		.ascii	"long long int\000"
+ 957      206C6F6E 
+ 957      6720696E 
+ 957      7400
+ 958              	.LASF16:
+ 959 025f 63686172 		.ascii	"char\000"
+ 959      00
+ 960              	.LASF18:
+ 961 0264 5F5F6865 		.ascii	"__heap_end__\000"
+ 961      61705F65 
+ 961      6E645F5F 
+ 961      00
+ 962              	.LASF5:
+ 963 0271 73686F72 		.ascii	"short int\000"
+ 963      7420696E 
+ 963      7400
+ 964              	.LASF20:
+ 965 027b 6368436F 		.ascii	"chCoreAlloc\000"
+ 965      7265416C 
+ 965      6C6F6300 
+ 966              	.LASF7:
+ 967 0287 6C6F6E67 		.ascii	"long int\000"
+ 967      20696E74 
+ 967      00
+ 968              	.LASF1:
+ 969 0290 7369676E 		.ascii	"signed char\000"
+ 969      65642063 
+ 969      68617200 
+ 970              	.LASF14:
+ 971 029c 5F426F6F 		.ascii	"_Bool\000"
+ 971      6C00
+ 972              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
+ARM GAS  /tmp/ccxKKk99.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 chmemcore.c
-     /tmp/cck7poLS.s:19     .text._core_init:0000000000000000 $t
-     /tmp/cck7poLS.s:25     .text._core_init:0000000000000000 _core_init
-     /tmp/cck7poLS.s:53     .text._core_init:0000000000000018 $d
-     /tmp/cck7poLS.s:61     .text.chCoreAllocI:0000000000000000 $t
-     /tmp/cck7poLS.s:67     .text.chCoreAllocI:0000000000000000 chCoreAllocI
-     /tmp/cck7poLS.s:110    .text.chCoreAllocI:0000000000000024 $d
-     /tmp/cck7poLS.s:116    .text.chCoreAlloc:0000000000000000 $t
-     /tmp/cck7poLS.s:122    .text.chCoreAlloc:0000000000000000 chCoreAlloc
-     /tmp/cck7poLS.s:171    .text.chCoreStatus:0000000000000000 $t
-     /tmp/cck7poLS.s:177    .text.chCoreStatus:0000000000000000 chCoreStatus
-     /tmp/cck7poLS.s:195    .text.chCoreStatus:000000000000000c $d
-     /tmp/cck7poLS.s:201    .bss.endmem:0000000000000000 $d
-     /tmp/cck7poLS.s:205    .bss.endmem:0000000000000000 endmem
-     /tmp/cck7poLS.s:208    .bss.nextmem:0000000000000000 $d
-     /tmp/cck7poLS.s:212    .bss.nextmem:0000000000000000 nextmem
+     /tmp/ccxKKk99.s:19     .text._core_init:0000000000000000 $t
+     /tmp/ccxKKk99.s:25     .text._core_init:0000000000000000 _core_init
+     /tmp/ccxKKk99.s:53     .text._core_init:0000000000000018 $d
+     /tmp/ccxKKk99.s:61     .text.chCoreAllocI:0000000000000000 $t
+     /tmp/ccxKKk99.s:67     .text.chCoreAllocI:0000000000000000 chCoreAllocI
+     /tmp/ccxKKk99.s:110    .text.chCoreAllocI:0000000000000024 $d
+     /tmp/ccxKKk99.s:116    .text.chCoreAlloc:0000000000000000 $t
+     /tmp/ccxKKk99.s:122    .text.chCoreAlloc:0000000000000000 chCoreAlloc
+     /tmp/ccxKKk99.s:171    .text.chCoreStatus:0000000000000000 $t
+     /tmp/ccxKKk99.s:177    .text.chCoreStatus:0000000000000000 chCoreStatus
+     /tmp/ccxKKk99.s:195    .text.chCoreStatus:000000000000000c $d
+     /tmp/ccxKKk99.s:201    .bss.endmem:0000000000000000 $d
+     /tmp/ccxKKk99.s:205    .bss.endmem:0000000000000000 endmem
+     /tmp/ccxKKk99.s:208    .bss.nextmem:0000000000000000 $d
+     /tmp/ccxKKk99.s:212    .bss.nextmem:0000000000000000 nextmem
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

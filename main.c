@@ -28,36 +28,29 @@ char chunkBuffer[CHUNK_LENGTH];
 /*===========================================================================*/
 /* ADC related stuff.                                                        */
 /*===========================================================================*/
+/* for how to use ADC, see: https://github.com/ashfaqfarooqui/CaroloCup/wiki/ADC-in-ChibiOS */
 static void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n);
 /* Total number of channels to be sampled by a single ADC operation.*/
-#define ADC_GRP1_NUM_CHANNELS   2
+#define ADC_GRP1_NUM_CHANNELS   6
 /* Depth of the conversion buffer, channels are sampled four times each.*/
 #define ADC_GRP1_BUF_DEPTH      4
 /*
  * ADC samples buffer.
  */
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
-/*
- * ADC conversion group.
- * Mode:        Linear buffer, 4 samples of 2 channels, SW triggered.
- * Channels:    IN11   (48 cycles sample time)
- *              Sensor (192 cycles sample time)
- */
 static const ADCConversionGroup adcgrpcfg = {
-  FALSE, //FALSE is linear, TRUE is circular
-  ADC_GRP1_NUM_CHANNELS,
-  adccb, //callback
-  NULL,
-  /* HW dependent part.*/
-  0, //CR1
-  ADC_CR2_SWSTART, //CR2
-  ADC_SMPR1_SMP_AN11(ADC_SAMPLE_56) | ADC_SMPR1_SMP_SENSOR(ADC_SAMPLE_56),
-  0,
-  ADC_SQR1_NUM_CH(ADC_GRP1_NUM_CHANNELS),
-  0,
-  ADC_SQR3_SQ2_N(ADC_CHANNEL_IN11) | ADC_SQR3_SQ1_N(ADC_CHANNEL_SENSOR)
+	FALSE, // circular buffer mode
+	ADC_GRP1_NUM_CHANNELS, // number of the analog channels
+	NULL, // callback function
+	NULL, // error callback
+	0, // CR1
+	ADC_CR2_SWSTART, // CR2
+	ADC_SMPR1_SMP_AN10(ADC_SAMPLE_3) | ADC_SMPR1_SMP_AN11(ADC_SAMPLE_3) | ADC_SMPR1_SMP_AN12(ADC_SAMPLE_3) | ADC_SMPR1_SMP_AN13(ADC_SAMPLE_3) | ADC_SMPR1_SMP_AN14(ADC_SAMPLE_3) | ADC_SMPR1_SMP_AN15(ADC_SAMPLE_3),// sample times for channel 10-18
+	0,// sample times for channel 0-9
+	ADC_SQR1_NUM_CH(ADC_GRP1_NUM_CHANNELS),// ADC SQR1 Conversion group sequence 13-16 + sequence length.
+	0, // ADC SQR2 Conversion group sequence 7-12
+	ADC_SQR3_SQ1_N(ADC_CHANNEL_IN10) | ADC_SQR3_SQ2_N(ADC_CHANNEL_IN11) | ADC_SQR3_SQ3_N(ADC_CHANNEL_IN12) | ADC_SQR3_SQ4_N(ADC_CHANNEL_IN13) | ADC_SQR3_SQ5_N(ADC_CHANNEL_IN14) | ADC_SQR3_SQ6_N(ADC_CHANNEL_IN15) // ADC SQR3 Conversion group sequence 1-6
 };
-
 /*
  * ADC end conversion callback.
  * The PWM channels are reprogrammed using the latest ADC samples.
@@ -298,8 +291,6 @@ void decodeRequest(uint8_t* msg){
 				palClearPad(GPIOD, GPIOD_LED5);			
 		}
 }
-
-char debugBuffer[128];
 //READ THREAD
 //Constantly read until reach '\n', receive command from docker to turn on/off green led
 //------------------------------SYNC THIS CODE WITH MAX--------------------------------------
@@ -310,37 +301,18 @@ void decodeNextNetstring(void) {
 	// Start decoding only if we have received enough data.
 	if (writePtr > 3) {
 		char *colonSign = NULL;
-		
-		//Debug only
-
-			//debugBuffer = colonSign;
-			//int bytesToWrite = sprintf(debugBuffer, "lengthOfPayload = %d", lengthOfPayload);
-			/*
-			int bytesToWrite = strlen(receiveBuffer);
-  		int bytesToWriteLeft = bytesToWrite;
-  		int bytesWritten = 0;
-  		if(receiveBuffer[0] == 'w')
-  											palSetPad(GPIOD, GPIOD_LED4);
-  		else
-  										palClearPad(GPIOD, GPIOD_LED4);
-  		while(bytesToWriteLeft > 0){
-  			bytesWritten = sdWriteTimeout(&SDU1, (uint8_t*)receiveBuffer, bytesToWrite, timeOut);
-  			bytesToWriteLeft -= bytesWritten;
-  		}
-  		*/
-		uint32_t lengthOfPayload = strtol(receiveBuffer, &colonSign, 10);
-
+		unsigned int lengthOfPayload = strtol(receiveBuffer, &colonSign, 10);
 		//if(lengthOfPayload == 16)
 		if (*colonSign == 0x3a) {
 			// Found colon sign.
- 		
+
 			// First, check if the buffer is as long as it is stated in the netstring.
 			if (writePtr < (int)lengthOfPayload) {
 			// Received data is too short. Skip further processing this part.
-
+			palSetPad(GPIOD, GPIOD_LED4);
 				return;
 			}
-
+			
 			// Now, check if (receiveBuffer + 1 + lengthOfPayload) == MSG_END.
 			if ((colonSign[1 + lengthOfPayload]) == ';') {
 				// Successfully found a complete Netstring.
@@ -369,12 +341,15 @@ void consumeNetstrings(void) {
   }    
 }
 
-int what = 0;
-void read(void ) {
-  	
+
+static WORKING_AREA(readThreadWA, 1024);
+static msg_t readThread(void *arg) {
+  chRegSetThreadName("read thread");
+  while (TRUE) {
   	//Lock mutex
     bytesRead = sdReadTimeout(&SDU1, (uint8_t*)chunkBuffer, CHUNK_LENGTH, timeOut);
     //Releash mutex
+  	
     if (bytesRead > 0) {
 			// Add received bytes to buffer to parse data from.
 			//check if receiveBuffer has enough space left
@@ -382,48 +357,44 @@ void read(void ) {
 			memcpy(receiveBuffer+writePtr, chunkBuffer, bytesRead);
 			writePtr += bytesRead;
 			}
-			
-				if(what < 3 || receiveBuffer[0] == ';'){
-			//read first time to get rid of random charactor
-  		memmove(receiveBuffer, receiveBuffer + 1, strlen(receiveBuffer)-1);
-  		what++;
-  	}
-  	
 			// Try to decode netstrings from receiveBuffer.
 			consumeNetstrings();
 		}
   	// Allow for thread scheduling.
     chThdSleepMilliseconds(5);
-	
+  }  	
 }
 
-static char writeBuffer[256];
-void write(void) {
-
+//WRITE THREAD
+static WORKING_AREA(writeThreadArea, 1024);
+static msg_t writeThread(void *arg) {
+  (void)arg;
+  chRegSetThreadName("write thread");
+  while (TRUE) {  	
   		//ANALOG DATA
-  		uint32_t raw = (uint32_t)(samples[1] + samples[3] + samples[5] + samples[7]) / 4; //PC1
-  		char rawString[4]; //ADC value rang 0-4096 = 4 bytes of char
-  		itoa(raw, rawString, 10);
-  		
+  		uint32_t raw0 = (uint32_t)(samples[0] + samples[6] + samples[12] + samples[18]) / 4; //PC0 
+  		uint32_t raw1 = (uint32_t)(samples[1] + samples[7] + samples[13] + samples[19]) / 4; //PC1 	
+  		uint32_t raw2 = (uint32_t)(samples[2] + samples[8] + samples[14] + samples[20]) / 4; //PC2
+  		uint32_t raw3 = (uint32_t)(samples[3] + samples[9] + samples[15] + samples[21]) / 4; //PC3
+  		uint32_t raw4 = (uint32_t)(samples[4] + samples[10] + samples[16] + samples[22]) / 4; //PC4
+  		uint32_t raw5 = (uint32_t)(samples[5] + samples[11] + samples[17] + samples[23]) / 4; //PC5		
   		//write buffer
   		char payloadBuffer[256];
-
+  		char writeBuffer[256];
 			
-			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d", raw);
+			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d|ebs_actuator|%d|pressure_rag|%d|service_tank|%d|position_rack|%d|steer_pos|%d", raw0, raw1, raw2, raw3, raw4, raw5);
 			int bytesToWrite = sprintf(writeBuffer, "%d:%s;", payloadLength,payloadBuffer);
-			//For debug
-			//writeBuffer[0] = 'w';
   		int bytesToWriteLeft = bytesToWrite;
   		int bytesWritten = 0;
   		
   		while(bytesToWriteLeft > 0){
-  			bytesWritten = sdWriteTimeout(&SDU1, writeBuffer, bytesToWrite, timeOut);
+  			bytesWritten = sdWriteTimeout(&SDU1, (uint8_t*)writeBuffer, bytesToWrite, timeOut);
   			bytesToWriteLeft -= bytesWritten;
   		}
 
   		bytesToWrite = 0;
   	chThdSleepMilliseconds(5);
-
+  }
 }
 
 //SAMPLE ADC 
@@ -432,13 +403,7 @@ static msg_t adcSampleThread(void *arg) {
   (void)arg;
   chRegSetThreadName("Sample ADC");
   while (TRUE) {
-    //chSysLockFromIsr();
   	adcConvert(&ADCD1, &adcgrpcfg, samples, ADC_GRP1_BUF_DEPTH);
-  	//chSysUnlockFromIsr();
-  	//adcStopConversion(&ADCD1);
-  	//chSysLockFromIsr();
-
-  	//chSysUnlockFromIsr();
   }
 }
 /*===========================================================================*/
@@ -452,21 +417,23 @@ int main(void) {
   // Initialize interface to exchange data.
   initializeUSB(); // USB driver and USB-CDC link.
   /*
-   * Initializes the ADC driver 1 and enable the thermal sensor.
-   * The pin PC1 on the port GPIOC is programmed as analog input.
+   * Initializes the ADC driver 1
+   * The pin PC0-PC5 on the port GPIOC is programmed as analog input.
    */
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(0), 0, PAL_MODE_INPUT_ANALOG); //Pin PC0
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(1), 0, PAL_MODE_INPUT_ANALOG); //Pin PC1
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(2), 0, PAL_MODE_INPUT_ANALOG); //Pin PC2
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(3), 0, PAL_MODE_INPUT_ANALOG); //Pin PC3
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(4), 0, PAL_MODE_INPUT_ANALOG); //Pin PC4
+  palSetGroupMode(GPIOC, PAL_PORT_BIT(5), 0, PAL_MODE_INPUT_ANALOG); //Pin PC5
   adcStart(&ADCD1, NULL);
-  adcSTM32EnableTSVREFE();
-  palSetPadMode(GPIOC, 1, PAL_MODE_INPUT_ANALOG); // Positionrack (Nam)
-  
-  //chSysLockFromIsr();
-  	//adcStartConversionI(&ADCD1, &adcgrpcfg, samples, ADC_GRP1_BUF_DEPTH);
-  	//chSysUnlockFromIsr();
-  
 
   // Creates the blinker thread. 
   chThdCreateStatic(usbThreadWA, sizeof(usbThreadWA), LOWPRIO, usbThread, NULL);
-  
+  // READ thread
+  //chThdCreateStatic(readThreadWA, sizeof(readThreadWA), HIGHPRIO, readThread, NULL);
+  // WRITE thread
+  chThdCreateStatic(writeThreadArea, sizeof(writeThreadArea), NORMALPRIO, writeThread, NULL);
   // ADC read thread
   chThdCreateStatic(adcSampleThreadWA, sizeof(adcSampleThreadWA), LOWPRIO, adcSampleThread, NULL);
   /*
@@ -475,10 +442,7 @@ int main(void) {
    */
   while (TRUE) {
     
-    read();
-      	chThdSleepMilliseconds(1);
-    write();
-      	chThdSleepMilliseconds(1);
+    chThdSleepMilliseconds(10);
 
   }
 }

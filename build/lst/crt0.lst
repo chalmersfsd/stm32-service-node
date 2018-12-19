@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccJEZoYM.s 			page 1
+ARM GAS  /tmp/ccLLMMJg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
   55 0002 00BF     		.section	.text._default_exit,"ax",%progbits
   56              		.align	2
   57              		.p2align 4,,15
-ARM GAS  /tmp/ccJEZoYM.s 			page 2
+ARM GAS  /tmp/ccLLMMJg.s 			page 2
 
 
   58              		.weak	_default_exit
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  112              	.LVL2:
  113              		.thumb
  114              	.LBB2:
-ARM GAS  /tmp/ccJEZoYM.s 			page 3
+ARM GAS  /tmp/ccLLMMJg.s 			page 3
 
 
  115              		.loc 1 301 0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  169 0062 20F00300 		bic	r0, r0, #3
  170 0066 1F4B     		ldr	r3, .L32+28
  171 0068 0430     		adds	r0, r0, #4
-ARM GAS  /tmp/ccJEZoYM.s 			page 4
+ARM GAS  /tmp/ccLLMMJg.s 			page 4
 
 
  172 006a 1844     		add	r0, r0, r3
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  226              	.LVL20:
  227              		.loc 1 336 0
  228 00a8 AC42     		cmp	r4, r5
-ARM GAS  /tmp/ccJEZoYM.s 			page 5
+ARM GAS  /tmp/ccLLMMJg.s 			page 5
 
 
  229 00aa FAD3     		bcc	.L17
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  283              	.Letext0:
  284              		.file 2 "/usr/include/newlib/machine/_default_types.h"
  285              		.file 3 "/usr/include/newlib/sys/_stdint.h"
-ARM GAS  /tmp/ccJEZoYM.s 			page 6
+ARM GAS  /tmp/ccLLMMJg.s 			page 6
 
 
  286              		.section	.debug_info,"",%progbits
@@ -311,14 +311,14 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  293 000c 4F010000 		.4byte	.LASF31
  294 0010 01       		.byte	0x1
  295 0011 DA000000 		.4byte	.LASF32
- 296 0015 17020000 		.4byte	.LASF33
+ 296 0015 02020000 		.4byte	.LASF33
  297 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
  298 001d 00000000 		.4byte	0
  299 0021 00000000 		.4byte	.Ldebug_line0
  300 0025 02       		.uleb128 0x2
  301 0026 01       		.byte	0x1
  302 0027 06       		.byte	0x6
- 303 0028 B6020000 		.4byte	.LASF0
+ 303 0028 C0020000 		.4byte	.LASF0
  304 002c 03       		.uleb128 0x3
  305 002d 0B000000 		.4byte	.LASF5
  306 0031 02       		.byte	0x2
@@ -331,7 +331,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  313 003e 02       		.uleb128 0x2
  314 003f 02       		.byte	0x2
  315 0040 05       		.byte	0x5
- 316 0041 8C020000 		.4byte	.LASF2
+ 316 0041 96020000 		.4byte	.LASF2
  317 0045 02       		.uleb128 0x2
  318 0046 02       		.byte	0x2
  319 0047 07       		.byte	0x7
@@ -339,7 +339,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  321 004c 02       		.uleb128 0x2
  322 004d 04       		.byte	0x4
  323 004e 05       		.byte	0x5
- 324 004f A7020000 		.4byte	.LASF4
+ 324 004f B1020000 		.4byte	.LASF4
  325 0053 03       		.uleb128 0x3
  326 0054 09010000 		.4byte	.LASF6
  327 0058 02       		.byte	0x2
@@ -352,13 +352,13 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  334 0065 02       		.uleb128 0x2
  335 0066 08       		.byte	0x8
  336 0067 05       		.byte	0x5
- 337 0068 02020000 		.4byte	.LASF8
+ 337 0068 6D020000 		.4byte	.LASF8
  338 006c 02       		.uleb128 0x2
  339 006d 08       		.byte	0x8
  340 006e 07       		.byte	0x7
  341 006f 26010000 		.4byte	.LASF9
  342 0073 04       		.uleb128 0x4
-ARM GAS  /tmp/ccJEZoYM.s 			page 7
+ARM GAS  /tmp/ccLLMMJg.s 			page 7
 
 
  343 0074 04       		.byte	0x4
@@ -374,12 +374,12 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  353 0087 14       		.byte	0x14
  354 0088 2C000000 		.4byte	0x2c
  355 008c 03       		.uleb128 0x3
- 356 008d 9E020000 		.4byte	.LASF12
+ 356 008d A8020000 		.4byte	.LASF12
  357 0091 03       		.byte	0x3
  358 0092 20       		.byte	0x20
  359 0093 53000000 		.4byte	0x53
  360 0097 03       		.uleb128 0x3
- 361 0098 96020000 		.4byte	.LASF13
+ 361 0098 A0020000 		.4byte	.LASF13
  362 009c 01       		.byte	0x1
  363 009d 34       		.byte	0x34
  364 009e A2000000 		.4byte	0xa2
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  397 00e4 00000000 		.4byte	.LFB2
  398 00e8 02000000 		.4byte	.LFE2-.LFB2
  399 00ec 01       		.uleb128 0x1
-ARM GAS  /tmp/ccJEZoYM.s 			page 8
+ARM GAS  /tmp/ccLLMMJg.s 			page 8
 
 
  400 00ed 9C       		.byte	0x9c
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  454 016e 56000000 		.4byte	.LBB4
  455 0172 22000000 		.4byte	.LBE4-.LBB4
  456 0176 95010000 		.4byte	0x195
-ARM GAS  /tmp/ccJEZoYM.s 			page 9
+ARM GAS  /tmp/ccLLMMJg.s 			page 9
 
 
  457 017a 0D       		.uleb128 0xd
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  511 0203 0F       		.uleb128 0xf
  512 0204 B4000000 		.4byte	.LVL22
  513 0208 AB020000 		.4byte	0x2ab
-ARM GAS  /tmp/ccJEZoYM.s 			page 10
+ARM GAS  /tmp/ccLLMMJg.s 			page 10
 
 
  514 020c 0F       		.uleb128 0xf
@@ -549,12 +549,12 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  519 0217 04       		.byte	0x4
  520 0218 8C000000 		.4byte	0x8c
  521 021c 10       		.uleb128 0x10
- 522 021d 78020000 		.4byte	.LASF18
+ 522 021d 82020000 		.4byte	.LASF18
  523 0221 01       		.byte	0x1
  524 0222 8B       		.byte	0x8b
  525 0223 8C000000 		.4byte	0x8c
  526 0227 10       		.uleb128 0x10
- 527 0228 EB020000 		.4byte	.LASF19
+ 527 0228 F5020000 		.4byte	.LASF19
  528 022c 01       		.byte	0x1
  529 022d 93       		.byte	0x93
  530 022e 8C000000 		.4byte	0x8c
@@ -564,7 +564,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  534 0238 9A       		.byte	0x9a
  535 0239 8C000000 		.4byte	0x8c
  536 023d 10       		.uleb128 0x10
- 537 023e C2020000 		.4byte	.LASF21
+ 537 023e CC020000 		.4byte	.LASF21
  538 0242 01       		.byte	0x1
  539 0243 A1       		.byte	0xa1
  540 0244 8C000000 		.4byte	0x8c
@@ -574,12 +574,12 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  544 024e A7       		.byte	0xa7
  545 024f 8C000000 		.4byte	0x8c
  546 0253 10       		.uleb128 0x10
- 547 0254 B0020000 		.4byte	.LASF23
+ 547 0254 BA020000 		.4byte	.LASF23
  548 0258 01       		.byte	0x1
  549 0259 AD       		.byte	0xad
  550 025a 8C000000 		.4byte	0x8c
  551 025e 10       		.uleb128 0x10
- 552 025f 10020000 		.4byte	.LASF24
+ 552 025f 7B020000 		.4byte	.LASF24
  553 0263 01       		.byte	0x1
  554 0264 B3       		.byte	0xb3
  555 0265 8C000000 		.4byte	0x8c
@@ -594,11 +594,11 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  564 027a BF       		.byte	0xbf
  565 027b 8C000000 		.4byte	0x8c
  566 027f 10       		.uleb128 0x10
- 567 0280 D8020000 		.4byte	.LASF27
+ 567 0280 E2020000 		.4byte	.LASF27
  568 0284 01       		.byte	0x1
  569 0285 C5       		.byte	0xc5
  570 0286 97000000 		.4byte	0x97
-ARM GAS  /tmp/ccJEZoYM.s 			page 11
+ARM GAS  /tmp/ccLLMMJg.s 			page 11
 
 
  571 028a 10       		.uleb128 0x10
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  625 0020 00       		.byte	0
  626 0021 03       		.uleb128 0x3
  627 0022 0E       		.uleb128 0xe
-ARM GAS  /tmp/ccJEZoYM.s 			page 12
+ARM GAS  /tmp/ccLLMMJg.s 			page 12
 
 
  628 0023 3A       		.uleb128 0x3a
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  682 0059 9742     		.uleb128 0x2117
  683 005b 19       		.uleb128 0x19
  684 005c 00       		.byte	0
-ARM GAS  /tmp/ccJEZoYM.s 			page 13
+ARM GAS  /tmp/ccLLMMJg.s 			page 13
 
 
  685 005d 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  739 0095 3A       		.uleb128 0x3a
  740 0096 0B       		.uleb128 0xb
  741 0097 3B       		.uleb128 0x3b
-ARM GAS  /tmp/ccJEZoYM.s 			page 14
+ARM GAS  /tmp/ccLLMMJg.s 			page 14
 
 
  742 0098 05       		.uleb128 0x5
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  796 00ce 00       		.byte	0
  797 00cf 0F       		.uleb128 0xf
  798 00d0 898201   		.uleb128 0x4109
-ARM GAS  /tmp/ccJEZoYM.s 			page 15
+ARM GAS  /tmp/ccLLMMJg.s 			page 15
 
 
  799 00d3 00       		.byte	0
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  853 001b 0100     		.2byte	0x1
  854 001d 53       		.byte	0x53
  855 001e 00000000 		.4byte	0
-ARM GAS  /tmp/ccJEZoYM.s 			page 16
+ARM GAS  /tmp/ccLLMMJg.s 			page 16
 
 
  856 0022 00000000 		.4byte	0
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  910 00ab C2000000 		.4byte	.LVL26
  911 00af 0100     		.2byte	0x1
  912 00b1 54       		.byte	0x54
-ARM GAS  /tmp/ccJEZoYM.s 			page 17
+ARM GAS  /tmp/ccLLMMJg.s 			page 17
 
 
  913 00b2 00000000 		.4byte	0
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  961      727400
  962              	.LASF5:
  963 000b 5F5F7569 		.ascii	"__uint8_t\000"
-ARM GAS  /tmp/ccJEZoYM.s 			page 18
+ARM GAS  /tmp/ccLLMMJg.s 			page 18
 
 
  963      6E74385F 
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  983      727400
  984              	.LASF15:
  985 00b3 5F5F6561 		.ascii	"__early_init\000"
-ARM GAS  /tmp/ccJEZoYM.s 			page 19
+ARM GAS  /tmp/ccLLMMJg.s 			page 19
 
 
  985      726C795F 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  1006      6F726B20 
  1007 01b5 706F696E 		.ascii	"pointer -falign-functions=16 -ffunction-sections -f"
  1007      74657220 
-ARM GAS  /tmp/ccJEZoYM.s 			page 20
+ARM GAS  /tmp/ccLLMMJg.s 			page 20
 
 
  1007      2D66616C 
@@ -1149,89 +1149,91 @@ ARM GAS  /tmp/ccJEZoYM.s 			page 1
  1008      74696F6E 
  1008      73202D66 
  1008      6E6F2D63 
- 1009              	.LASF8:
- 1010 0202 6C6F6E67 		.ascii	"long long int\000"
- 1010      206C6F6E 
- 1010      6720696E 
- 1010      7400
- 1011              	.LASF24:
- 1012 0210 5F656461 		.ascii	"_edata\000"
- 1012      746100
- 1013              	.LASF33:
- 1014 0217 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
- 1014      652F6E61 
- 1014      6D763139 
- 1014      39342F43 
- 1014      46534431 
- 1015 024a 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC\000"
- 1015      3246342F 
- 1015      656D6265 
- 1015      64646564 
- 1015      2F436869 
- 1016              	.LASF18:
- 1017 0278 5F5F6D61 		.ascii	"__main_stack_base__\000"
- 1017      696E5F73 
- 1017      7461636B 
- 1017      5F626173 
- 1017      655F5F00 
- 1018              	.LASF2:
- 1019 028c 73686F72 		.ascii	"short int\000"
- 1019      7420696E 
- 1019      7400
- 1020              	.LASF13:
- 1021 0296 66756E63 		.ascii	"funcp_t\000"
- 1021      705F7400 
- 1022              	.LASF12:
- 1023 029e 75696E74 		.ascii	"uint32_t\000"
- 1023      33325F74 
- 1023      00
- 1024              	.LASF4:
- 1025 02a7 6C6F6E67 		.ascii	"long int\000"
- 1025      20696E74 
- 1025      00
- 1026              	.LASF23:
- 1027 02b0 5F646174 		.ascii	"_data\000"
- 1027      6100
- 1028              	.LASF0:
- 1029 02b6 7369676E 		.ascii	"signed char\000"
- 1029      65642063 
- 1029      68617200 
- 1030              	.LASF21:
- 1031 02c2 5F5F7072 		.ascii	"__process_stack_end__\000"
-ARM GAS  /tmp/ccJEZoYM.s 			page 21
+ 1009              	.LASF33:
+ 1010 0202 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
+ 1010      652F6E61 
+ 1010      6D763139 
+ 1010      39342F43 
+ 1010      46534431 
+ 1011 0235 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC (back"
+ 1011      3246342F 
+ 1011      656D6265 
+ 1011      64646564 
+ 1011      2F436869 
+ 1012 0268 75703929 		.ascii	"up9)\000"
+ 1012      00
+ 1013              	.LASF8:
+ 1014 026d 6C6F6E67 		.ascii	"long long int\000"
+ 1014      206C6F6E 
+ 1014      6720696E 
+ 1014      7400
+ 1015              	.LASF24:
+ 1016 027b 5F656461 		.ascii	"_edata\000"
+ 1016      746100
+ 1017              	.LASF18:
+ 1018 0282 5F5F6D61 		.ascii	"__main_stack_base__\000"
+ 1018      696E5F73 
+ 1018      7461636B 
+ 1018      5F626173 
+ 1018      655F5F00 
+ 1019              	.LASF2:
+ 1020 0296 73686F72 		.ascii	"short int\000"
+ 1020      7420696E 
+ 1020      7400
+ 1021              	.LASF13:
+ 1022 02a0 66756E63 		.ascii	"funcp_t\000"
+ 1022      705F7400 
+ 1023              	.LASF12:
+ 1024 02a8 75696E74 		.ascii	"uint32_t\000"
+ 1024      33325F74 
+ 1024      00
+ 1025              	.LASF4:
+ 1026 02b1 6C6F6E67 		.ascii	"long int\000"
+ 1026      20696E74 
+ 1026      00
+ 1027              	.LASF23:
+ 1028 02ba 5F646174 		.ascii	"_data\000"
+ 1028      6100
+ 1029              	.LASF0:
+ 1030 02c0 7369676E 		.ascii	"signed char\000"
+ 1030      65642063 
+ 1030      68617200 
+ARM GAS  /tmp/ccLLMMJg.s 			page 21
 
 
- 1031      6F636573 
- 1031      735F7374 
- 1031      61636B5F 
- 1031      656E645F 
- 1032              	.LASF27:
- 1033 02d8 5F5F696E 		.ascii	"__init_array_start\000"
- 1033      69745F61 
- 1033      72726179 
- 1033      5F737461 
- 1033      727400
- 1034              	.LASF19:
- 1035 02eb 5F5F6D61 		.ascii	"__main_stack_end__\000"
- 1035      696E5F73 
- 1035      7461636B 
- 1035      5F656E64 
- 1035      5F5F00
- 1036              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccJEZoYM.s 			page 22
+ 1031              	.LASF21:
+ 1032 02cc 5F5F7072 		.ascii	"__process_stack_end__\000"
+ 1032      6F636573 
+ 1032      735F7374 
+ 1032      61636B5F 
+ 1032      656E645F 
+ 1033              	.LASF27:
+ 1034 02e2 5F5F696E 		.ascii	"__init_array_start\000"
+ 1034      69745F61 
+ 1034      72726179 
+ 1034      5F737461 
+ 1034      727400
+ 1035              	.LASF19:
+ 1036 02f5 5F5F6D61 		.ascii	"__main_stack_end__\000"
+ 1036      696E5F73 
+ 1036      7461636B 
+ 1036      5F656E64 
+ 1036      5F5F00
+ 1037              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
+ARM GAS  /tmp/ccLLMMJg.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 crt0.c
-     /tmp/ccJEZoYM.s:19     .text.__early_init:0000000000000000 $t
-     /tmp/ccJEZoYM.s:25     .text.__early_init:0000000000000000 __early_init
-     /tmp/ccJEZoYM.s:38     .text.__late_init:0000000000000000 $t
-     /tmp/ccJEZoYM.s:44     .text.__late_init:0000000000000000 __late_init
-     /tmp/ccJEZoYM.s:56     .text._default_exit:0000000000000000 $t
-     /tmp/ccJEZoYM.s:62     .text._default_exit:0000000000000000 _default_exit
-     /tmp/ccJEZoYM.s:76     .text.ResetHandler:0000000000000000 $t
-     /tmp/ccJEZoYM.s:82     .text.ResetHandler:0000000000000000 ResetHandler
-     /tmp/ccJEZoYM.s:265    .text.ResetHandler:00000000000000c8 $d
+     /tmp/ccLLMMJg.s:19     .text.__early_init:0000000000000000 $t
+     /tmp/ccLLMMJg.s:25     .text.__early_init:0000000000000000 __early_init
+     /tmp/ccLLMMJg.s:38     .text.__late_init:0000000000000000 $t
+     /tmp/ccLLMMJg.s:44     .text.__late_init:0000000000000000 __late_init
+     /tmp/ccLLMMJg.s:56     .text._default_exit:0000000000000000 $t
+     /tmp/ccLLMMJg.s:62     .text._default_exit:0000000000000000 _default_exit
+     /tmp/ccLLMMJg.s:76     .text.ResetHandler:0000000000000000 $t
+     /tmp/ccLLMMJg.s:82     .text.ResetHandler:0000000000000000 ResetHandler
+     /tmp/ccLLMMJg.s:265    .text.ResetHandler:00000000000000c8 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
