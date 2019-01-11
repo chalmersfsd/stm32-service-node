@@ -43,6 +43,12 @@
 #define REDUNDENCY "redundency"
 #define SPARE "spare"
 
+#define STEER_SPEED "steer_speed"
+#define BRAKE_PRESSURE "brake_pressure"
+#define ASSI_BLUE "assi_blue"
+#define ASSI_RED "assi_red"
+#define ASSI_GREEN "assi_green"
+
 /* --- status_msgs --- */
 #define ASMS  "asms"
 #define CLAMPED_SENSOR  "clamped_sensor"

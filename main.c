@@ -70,6 +70,27 @@ void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n) {
 }
 
 /*===========================================================================*/
+/* PWM Read related stuff.                                                   */
+/*===========================================================================*/
+/*
+ * PWM configuration
+ */
+static PWMConfig pwmcfg = {
+  100000,                                    /* 10kHz PWM clock frequency.   */
+  10,                                    /* PWM period 100 (in ticks).    */
+  NULL,
+  {
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL}
+  },
+  /* HW dependent part.*/
+  0,
+  0
+};
+
+/*===========================================================================*/
 /* Generic code.                                                             */
 /*===========================================================================*/
 systime_t timeOut = MS2ST(10); // Receiving and sending timeout is 10ms.
@@ -114,10 +135,17 @@ static msg_t usbThread(void *arg) {
     	time=125;
     else
     	time=500;
+  /*
     palClearPad(GPIOD, GPIOD_LED3);
     chThdSleepMilliseconds(time);
     palSetPad(GPIOD, GPIOD_LED3);
     chThdSleepMilliseconds(time);
+  */
+  unsigned int pin = GPIOD_PIN1;
+  palWritePad(GPIOD, GPIOD_LED3, PAL_HIGH);
+  chThdSleepMilliseconds(time);
+  palWritePad(GPIOD, GPIOD_LED3, PAL_LOW);
+  chThdSleepMilliseconds(time);
   }
 }
 // Decode requests sent from docker
@@ -167,128 +195,213 @@ void cats(char **str, const char *str2) {
 }
 
 char* messageBuffer[64];
+unsigned int decodedValue = 0;
 void decodeRequest(uint8_t* msg){
 		char* readptr = msg;
 		char* pin = NULL;
 		char* valuePtr = NULL;
 		bool foundPin = false;
 		bool isGPIO = false;
+		bool isPWM = false;
 		unsigned int pinNameLength = 0;
-
-		if(!foundPin){//1
+		unsigned int pinID = 0;
+		// digital out request
+		if(!foundPin){//PD0
 			pin = strstr(readptr, HEART_BEAT);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(HEART_BEAT);			
+				pinNameLength = strlen(HEART_BEAT);		
+				pinID = 0;
 			}
 		}
 		
-		if(!foundPin){//2
+		if(!foundPin){//PD1
 			pin = strstr(readptr, RACK_RIGHT);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(RACK_RIGHT);			
+				pinNameLength = strlen(RACK_RIGHT);
+				pinID = 1;			
 			}
 		}
 		
-		if(!foundPin){//3
+		if(!foundPin){//PD2
 			pin = strstr(readptr, RACK_LEFT);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(RACK_LEFT);			
+				pinNameLength = strlen(RACK_LEFT);
+				pinID = 2;			
 			}
 		}
 		
-		if(!foundPin){//4
+		if(!foundPin){//PD3
 			pin = strstr(readptr, SERVICE_BREAK);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(SERVICE_BREAK);			
+				pinNameLength = strlen(SERVICE_BREAK);
+				pinID = 3;			
 			}
 		}
 		
-		if(!foundPin){//5
+		if(!foundPin){//PD4
 			pin = strstr(readptr, REDUNDENCY);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(REDUNDENCY);			
+				pinNameLength = strlen(REDUNDENCY);
+				pinID = 4;			
 			}
 		}
 		
-		if(!foundPin){//6
+		if(!foundPin){//PD6
 			pin = strstr(readptr, SHUTDOWN);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(SHUTDOWN);			
+				pinNameLength = strlen(SHUTDOWN);
+				pinID = 6;			
 			}
 		}
 		
-		if(!foundPin){//7
+		if(!foundPin){//PD7
 			pin = strstr(readptr, SPARE);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(SPARE);			
+				pinNameLength = strlen(SPARE);
+				pinID = 7;			
 			}
 		}
 		
-		if(!foundPin){//8
+		if(!foundPin){//PD8
 			pin = strstr(readptr, CLAMP_SET);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(CLAMP_SET);			
+				pinNameLength = strlen(CLAMP_SET);
+				pinID = 8;			
 			}
 		}
 		
-		if(!foundPin){//9
+		if(!foundPin){//PD9
 			pin = strstr(readptr, COMPRESSOR);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(COMPRESSOR);			
+				pinNameLength = strlen(COMPRESSOR);
+				pinID = 9;			
 			}
 		}
 		
-		if(!foundPin){//10
+		if(!foundPin){//PD10
 			pin = strstr(readptr, EBS_RELIEF);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(EBS_RELIEF);			
+				pinNameLength = strlen(EBS_RELIEF);
+				pinID = 10;			
 			}
 		}
 		
-		if(!foundPin){//11
+		if(!foundPin){//PD11
 			pin = strstr(readptr, EBS_SPEAKER);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(EBS_SPEAKER);			
+				pinNameLength = strlen(EBS_SPEAKER);
+				pinID = 11;			
 			}
 		}
 		
-		if(!foundPin){//12
+		if(!foundPin){//PD12
 			pin = strstr(readptr, FINISHED);
 			if(pin){
 				foundPin = true;
 				isGPIO = true;
-				pinNameLength = strlen(FINISHED);			
+				pinNameLength = strlen(FINISHED);
+				pinID = 12;			
+			}
+		}
+		
+		// PWM request
+		if(!foundPin){//PB5
+			pin = strstr(readptr, STEER_SPEED);
+			if(pin){
+				foundPin = true;
+				isPWM = true;
+				pinNameLength = strlen(STEER_SPEED);
+				pinID = 5;		
+			}
+		}
+		
+		if(!foundPin){//PB6
+			pin = strstr(readptr, BRAKE_PRESSURE);
+			if(pin){
+				foundPin = true;
+				isPWM = true;
+				pinNameLength = strlen(BRAKE_PRESSURE);
+				pinID = 6;			
+			}
+		}
+		
+		if(!foundPin){//PB7
+			pin = strstr(readptr, ASSI_BLUE);
+			if(pin){
+				foundPin = true;
+				isPWM = true;
+				pinNameLength = strlen(ASSI_BLUE);
+				pinID = 7;			
+			}
+		}
+		
+		if(!foundPin){//PB8
+			pin = strstr(readptr, ASSI_RED);
+			if(pin){
+				foundPin = true;
+				isPWM = true;
+				pinNameLength = strlen(ASSI_RED);
+				pinID = 8;			
+			}
+		}
+		
+		if(!foundPin){//PB9
+			pin = strstr(readptr, ASSI_GREEN);
+			if(pin){
+				foundPin = true;
+				isPWM = true;
+				pinNameLength = strlen(ASSI_GREEN);
+				pinID = 9;			
 			}
 		}
 		
 		if(pin && isGPIO){
 			valuePtr = pin + pinNameLength + 1;
 			if(*valuePtr-48 == 1)
-				palSetPad(GPIOD, GPIOD_LED5);
+				palWritePad(GPIOD, pinID, PAL_HIGH);
 			else
-				palClearPad(GPIOD, GPIOD_LED5);			
+				palWritePad(GPIOD, pinID, PAL_LOW);		
+		}
+		else
+		if(pin && isPWM){
+			valuePtr = pin + pinNameLength + 1;
+			unsigned int dutyCycle = strtol(valuePtr, NULL, 10);
+      decodedValue = dutyCycle;
+	    
+	    switch(pinID){
+	      case 5: // linear actuator steer spped
+	        pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, dutyCycle)); break;
+	      case 6: // pressure regulator
+	        pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, dutyCycle)); break;
+	      case 7: // ASSI blue
+	        pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, dutyCycle)); break;
+	      case 8: // ASSI red
+	        pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, dutyCycle)); break;
+	      case 9: // ASSI green
+	        pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, dutyCycle)); break;
+	    }
 		}
 }
 //READ THREAD
@@ -301,22 +414,22 @@ void decodeNextNetstring(void) {
 	// Start decoding only if we have received enough data.
 	if (writePtr > 3) {
 		char *colonSign = NULL;
+		
+		
+  		
 		unsigned int lengthOfPayload = strtol(receiveBuffer, &colonSign, 10);
-		//if(lengthOfPayload == 16)
 		if (*colonSign == 0x3a) {
 			// Found colon sign.
-
 			// First, check if the buffer is as long as it is stated in the netstring.
 			if (writePtr < (int)lengthOfPayload) {
 			// Received data is too short. Skip further processing this part.
-			palSetPad(GPIOD, GPIOD_LED4);
 				return;
 			}
 			
 			// Now, check if (receiveBuffer + 1 + lengthOfPayload) == MSG_END.
 			if ((colonSign[1 + lengthOfPayload]) == ';') {
 				// Successfully found a complete Netstring.
-				memcpy(messageBuffer, colonSign + 1, lengthOfPayload);
+				memcpy(messageBuffer, colonSign + 1, lengthOfPayload + 1);
 				decodeRequest(messageBuffer);
 				// Determine the size of Netstring.
 				int lengthOfNetstring = (colonSign + 1 + lengthOfPayload + 1) - receiveBuffer;
@@ -371,19 +484,27 @@ static msg_t writeThread(void *arg) {
   (void)arg;
   chRegSetThreadName("write thread");
   while (TRUE) {  	
-  		//ANALOG DATA
+  		//Analog input
   		uint32_t raw0 = (uint32_t)(samples[0] + samples[6] + samples[12] + samples[18]) / 4; //PC0 
   		uint32_t raw1 = (uint32_t)(samples[1] + samples[7] + samples[13] + samples[19]) / 4; //PC1 	
   		uint32_t raw2 = (uint32_t)(samples[2] + samples[8] + samples[14] + samples[20]) / 4; //PC2
   		uint32_t raw3 = (uint32_t)(samples[3] + samples[9] + samples[15] + samples[21]) / 4; //PC3
   		uint32_t raw4 = (uint32_t)(samples[4] + samples[10] + samples[16] + samples[22]) / 4; //PC4
   		uint32_t raw5 = (uint32_t)(samples[5] + samples[11] + samples[17] + samples[23]) / 4; //PC5		
+  		//Digital input
+  		bool raw6 = palReadPad(GPIOC, 13); //PC13
+      bool raw7 = palReadPad(GPIOC, 14); //PC14
+      bool raw8 = palReadPad(GPIOC, 15); //PC15
   		//write buffer
   		char payloadBuffer[256];
   		char writeBuffer[256];
 			
-			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d|ebs_actuator|%d|pressure_rag|%d|service_tank|%d|position_rack|%d|steer_pos|%d", raw0, raw1, raw2, raw3, raw4, raw5);
-			int bytesToWrite = sprintf(writeBuffer, "%d:%s;", payloadLength,payloadBuffer);
+			/*
+			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d|ebs_actuator|%d|pressure_rag|%d|service_tank|%d|position_rack|%d|steer_pos|%d|asms|%d|clamped_sensor|%d|ebs_ok|%d", raw0, raw1, raw2, raw3, raw4, raw5, raw6, raw7, raw8);
+			*/
+			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d", raw6);
+			//added a whitespace at the beiginning to fix the unknwon bug
+			int bytesToWrite = sprintf(writeBuffer, " %d:%s;", payloadLength,payloadBuffer);
   		int bytesToWriteLeft = bytesToWrite;
   		int bytesWritten = 0;
   		
@@ -392,7 +513,19 @@ static msg_t writeThread(void *arg) {
   			bytesToWriteLeft -= bytesWritten;
   		}
 
-  		bytesToWrite = 0;
+  		chThdSleepMilliseconds(10);
+  	/*
+  	 //Debug
+		 bytesToWrite = strlen(receiveBuffer);
+  		 bytesToWriteLeft = bytesToWrite;
+  		 bytesWritten = 0;
+  		
+  		while(bytesToWriteLeft > 0){
+  			bytesWritten = sdWriteTimeout(&SDU1, (uint8_t*)receiveBuffer, bytesToWrite, timeOut);
+  			bytesToWriteLeft -= bytesWritten;
+  		}
+  	*/
+
   	chThdSleepMilliseconds(5);
   }
 }
@@ -428,10 +561,28 @@ int main(void) {
   palSetGroupMode(GPIOC, PAL_PORT_BIT(5), 0, PAL_MODE_INPUT_ANALOG); //Pin PC5
   adcStart(&ADCD1, NULL);
 
+  /*
+   * Initializes the PWM driver 3 & 4, then set to zero duty cycle
+   */
+  pwmStart(&PWMD4, &pwmcfg);
+  pwmStart(&PWMD3, &pwmcfg);
+  
+  palSetPadMode(GPIOB, 5, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM3_CH2)
+  palSetPadMode(GPIOB, 6, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH1)
+  palSetPadMode(GPIOB, 7, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH2)
+  palSetPadMode(GPIOB, 8, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH3)
+  palSetPadMode(GPIOB, 9, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH4)
+  
+  pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 0)); 
+  pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
+  pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
+  pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
+  pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
+  
   // Creates the blinker thread. 
   chThdCreateStatic(usbThreadWA, sizeof(usbThreadWA), LOWPRIO, usbThread, NULL);
   // READ thread
-  //chThdCreateStatic(readThreadWA, sizeof(readThreadWA), HIGHPRIO, readThread, NULL);
+  chThdCreateStatic(readThreadWA, sizeof(readThreadWA), HIGHPRIO, readThread, NULL);
   // WRITE thread
   chThdCreateStatic(writeThreadArea, sizeof(writeThreadArea), NORMALPRIO, writeThread, NULL);
   // ADC read thread
@@ -441,7 +592,6 @@ int main(void) {
    * sleeping in a loop and check the button state.
    */
   while (TRUE) {
-    
     chThdSleepMilliseconds(10);
 
   }

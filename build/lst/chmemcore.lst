@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccxKKk99.s 			page 1
+ARM GAS  /tmp/ccos45wX.s 			page 1
 
 
    1              		.syntax unified
@@ -27,7 +27,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
   24              		.type	_core_init, %function
   25              	_core_init:
   26              	.LFB7:
-  27              		.file 1 "../../ChibiOS_2.6.5/os/kernel/src/chmemcore.c"
+  27              		.file 1 "ChibiOS_2.6.5/os/kernel/src/chmemcore.c"
   28              		.loc 1 66 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
   55 0020 00000000 		.word	.LANCHOR0
   56 0024 00000000 		.word	.LANCHOR1
   57              		.cfi_endproc
-ARM GAS  /tmp/ccxKKk99.s 			page 2
+ARM GAS  /tmp/ccos45wX.s 			page 2
 
 
   58              	.LFE7:
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  112              		.cfi_endproc
  113              	.LFE9:
  114              		.size	chCoreAllocI, .-chCoreAllocI
-ARM GAS  /tmp/ccxKKk99.s 			page 3
+ARM GAS  /tmp/ccos45wX.s 			page 3
 
 
  115              		.section	.text.chCoreAlloc,"ax",%progbits
@@ -147,7 +147,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  138 0004 0446     		mov	r4, r0
  139              	.LBB3:
  140              		.loc 1 94 0
- 141              	@ 94 "../../ChibiOS_2.6.5/os/kernel/src/chmemcore.c" 1
+ 141              	@ 94 "ChibiOS_2.6.5/os/kernel/src/chmemcore.c" 1
  142 0006 83F31188 		msr     BASEPRI, r3
  143              	@ 0 "" 2
  144              		.thumb
@@ -165,7 +165,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  156              	.LVL11:
  157              	.LBB4:
  158 001a 0023     		movs	r3, #0
- 159              	@ 96 "../../ChibiOS_2.6.5/os/kernel/src/chmemcore.c" 1
+ 159              	@ 96 "ChibiOS_2.6.5/os/kernel/src/chmemcore.c" 1
  160 001c 83F31188 		msr     BASEPRI, r3
  161              	@ 0 "" 2
  162              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  169              		.size	chCoreAlloc, .-chCoreAlloc
  170              		.section	.text.chCoreStatus,"ax",%progbits
  171              		.align	2
-ARM GAS  /tmp/ccxKKk99.s 			page 4
+ARM GAS  /tmp/ccos45wX.s 			page 4
 
 
  172              		.p2align 4,,15
@@ -228,7 +228,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  216              		.file 2 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h"
  217              		.file 3 "/usr/include/newlib/machine/_default_types.h"
  218              		.file 4 "/usr/include/newlib/sys/_stdint.h"
- 219              		.file 5 "../../ChibiOS_2.6.5/os/kernel/include/chdebug.h"
+ 219              		.file 5 "ChibiOS_2.6.5/os/kernel/include/chdebug.h"
  220              		.section	.debug_info,"",%progbits
  221              	.Ldebug_info0:
  222 0000 22020000 		.4byte	0x222
@@ -236,13 +236,13 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  224 0006 00000000 		.4byte	.Ldebug_abbrev0
  225 000a 04       		.byte	0x4
  226 000b 01       		.uleb128 0x1
- 227 000c 2A010000 		.4byte	.LASF27
+ 227 000c FC000000 		.4byte	.LASF27
  228 0010 01       		.byte	0x1
-ARM GAS  /tmp/ccxKKk99.s 			page 5
+ARM GAS  /tmp/ccos45wX.s 			page 5
 
 
- 229 0011 07000000 		.4byte	.LASF28
- 230 0015 E6010000 		.4byte	.LASF29
+ 229 0011 64020000 		.4byte	.LASF28
+ 230 0015 D8010000 		.4byte	.LASF29
  231 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
  232 001d 00000000 		.4byte	0
  233 0021 00000000 		.4byte	.Ldebug_line0
@@ -251,88 +251,88 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  236 0027 05       		.byte	0x5
  237 0028 696E7400 		.ascii	"int\000"
  238 002c 03       		.uleb128 0x3
- 239 002d 3F000000 		.4byte	.LASF2
+ 239 002d 11000000 		.4byte	.LASF2
  240 0031 02       		.byte	0x2
  241 0032 D4       		.byte	0xd4
  242 0033 37000000 		.4byte	0x37
  243 0037 04       		.uleb128 0x4
  244 0038 04       		.byte	0x4
  245 0039 07       		.byte	0x7
- 246 003a F0000000 		.4byte	.LASF0
+ 246 003a C2000000 		.4byte	.LASF0
  247 003e 04       		.uleb128 0x4
  248 003f 01       		.byte	0x1
  249 0040 06       		.byte	0x6
- 250 0041 90020000 		.4byte	.LASF1
+ 250 0041 58020000 		.4byte	.LASF1
  251 0045 03       		.uleb128 0x3
- 252 0046 35000000 		.4byte	.LASF3
+ 252 0046 07000000 		.4byte	.LASF3
  253 004a 03       		.byte	0x3
  254 004b 1D       		.byte	0x1d
  255 004c 50000000 		.4byte	0x50
  256 0050 04       		.uleb128 0x4
  257 0051 01       		.byte	0x1
  258 0052 08       		.byte	0x8
- 259 0053 CC000000 		.4byte	.LASF4
+ 259 0053 9E000000 		.4byte	.LASF4
  260 0057 04       		.uleb128 0x4
  261 0058 02       		.byte	0x2
  262 0059 05       		.byte	0x5
- 263 005a 71020000 		.4byte	.LASF5
+ 263 005a 39020000 		.4byte	.LASF5
  264 005e 04       		.uleb128 0x4
  265 005f 02       		.byte	0x2
  266 0060 07       		.byte	0x7
- 267 0061 B0000000 		.4byte	.LASF6
+ 267 0061 82000000 		.4byte	.LASF6
  268 0065 04       		.uleb128 0x4
  269 0066 04       		.byte	0x4
  270 0067 05       		.byte	0x5
- 271 0068 87020000 		.4byte	.LASF7
+ 271 0068 4F020000 		.4byte	.LASF7
  272 006c 03       		.uleb128 0x3
- 273 006d DA000000 		.4byte	.LASF8
+ 273 006d AC000000 		.4byte	.LASF8
  274 0071 03       		.byte	0x3
  275 0072 41       		.byte	0x41
  276 0073 77000000 		.4byte	0x77
  277 0077 04       		.uleb128 0x4
  278 0078 04       		.byte	0x4
  279 0079 07       		.byte	0x7
- 280 007a 91000000 		.4byte	.LASF9
+ 280 007a 63000000 		.4byte	.LASF9
  281 007e 04       		.uleb128 0x4
  282 007f 08       		.byte	0x8
  283 0080 05       		.byte	0x5
- 284 0081 51020000 		.4byte	.LASF10
+ 284 0081 B8010000 		.4byte	.LASF10
  285 0085 04       		.uleb128 0x4
-ARM GAS  /tmp/ccxKKk99.s 			page 6
+ARM GAS  /tmp/ccos45wX.s 			page 6
 
 
  286 0086 08       		.byte	0x8
  287 0087 07       		.byte	0x7
- 288 0088 FD000000 		.4byte	.LASF11
+ 288 0088 CF000000 		.4byte	.LASF11
  289 008c 03       		.uleb128 0x3
- 290 008d 14010000 		.4byte	.LASF12
+ 290 008d E6000000 		.4byte	.LASF12
  291 0091 04       		.byte	0x4
  292 0092 14       		.byte	0x14
  293 0093 45000000 		.4byte	0x45
  294 0097 03       		.uleb128 0x3
- 295 0098 C3000000 		.4byte	.LASF13
+ 295 0098 95000000 		.4byte	.LASF13
  296 009c 04       		.byte	0x4
  297 009d 20       		.byte	0x20
  298 009e 6C000000 		.4byte	0x6c
  299 00a2 04       		.uleb128 0x4
  300 00a3 01       		.byte	0x1
  301 00a4 02       		.byte	0x2
- 302 00a5 9C020000 		.4byte	.LASF14
+ 302 00a5 8C020000 		.4byte	.LASF14
  303 00a9 05       		.uleb128 0x5
  304 00aa 04       		.byte	0x4
  305 00ab 04       		.uleb128 0x4
  306 00ac 04       		.byte	0x4
  307 00ad 07       		.byte	0x7
- 308 00ae DD010000 		.4byte	.LASF15
+ 308 00ae AF010000 		.4byte	.LASF15
  309 00b2 04       		.uleb128 0x4
  310 00b3 01       		.byte	0x1
  311 00b4 08       		.byte	0x8
- 312 00b5 5F020000 		.4byte	.LASF16
+ 312 00b5 C6010000 		.4byte	.LASF16
  313 00b9 06       		.uleb128 0x6
  314 00ba 04       		.byte	0x4
  315 00bb 8C000000 		.4byte	0x8c
  316 00bf 07       		.uleb128 0x7
- 317 00c0 E5000000 		.4byte	.LASF30
+ 317 00c0 B7000000 		.4byte	.LASF30
  318 00c4 01       		.byte	0x1
  319 00c5 42       		.byte	0x42
  320 00c6 00000000 		.4byte	.LFB7
@@ -341,12 +341,12 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  323 00cf 9C       		.byte	0x9c
  324 00d0 EB000000 		.4byte	0xeb
  325 00d4 08       		.uleb128 0x8
- 326 00d5 1C010000 		.4byte	.LASF17
+ 326 00d5 EE000000 		.4byte	.LASF17
  327 00d9 01       		.byte	0x1
  328 00da 44       		.byte	0x44
  329 00db EB000000 		.4byte	0xeb
  330 00df 08       		.uleb128 0x8
- 331 00e0 64020000 		.4byte	.LASF18
+ 331 00e0 CB010000 		.4byte	.LASF18
  332 00e4 01       		.byte	0x1
  333 00e5 45       		.byte	0x45
  334 00e6 EB000000 		.4byte	0xeb
@@ -357,8 +357,8 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  339 00f4 0A       		.uleb128 0xa
  340 00f5 00       		.byte	0
  341 00f6 0B       		.uleb128 0xb
- 342 00f7 7F000000 		.4byte	.LASF19
-ARM GAS  /tmp/ccxKKk99.s 			page 7
+ 342 00f7 51000000 		.4byte	.LASF19
+ARM GAS  /tmp/ccos45wX.s 			page 7
 
 
  343 00fb 01       		.byte	0x1
@@ -370,7 +370,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  349 010a 9C       		.byte	0x9c
  350 010b 35010000 		.4byte	0x135
  351 010f 0C       		.uleb128 0xc
- 352 0110 8C000000 		.4byte	.LASF21
+ 352 0110 5E000000 		.4byte	.LASF21
  353 0114 01       		.byte	0x1
  354 0115 70       		.byte	0x70
  355 0116 2C000000 		.4byte	0x2c
@@ -386,7 +386,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  365 0130 10020000 		.4byte	0x210
  366 0134 00       		.byte	0
  367 0135 0B       		.uleb128 0xb
- 368 0136 7B020000 		.4byte	.LASF20
+ 368 0136 43020000 		.4byte	.LASF20
  369 013a 01       		.byte	0x1
  370 013b 5B       		.byte	0x5b
  371 013c A9000000 		.4byte	0xa9
@@ -396,7 +396,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  375 0149 9C       		.byte	0x9c
  376 014a C3010000 		.4byte	0x1c3
  377 014e 0C       		.uleb128 0xc
- 378 014f 8C000000 		.4byte	.LASF21
+ 378 014f 5E000000 		.4byte	.LASF21
  379 0153 01       		.byte	0x1
  380 0154 5B       		.byte	0x5b
  381 0155 2C000000 		.4byte	0x2c
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  397 017e 01       		.uleb128 0x1
  398 017f 53       		.byte	0x53
  399 0180 00       		.byte	0
-ARM GAS  /tmp/ccxKKk99.s 			page 8
+ARM GAS  /tmp/ccos45wX.s 			page 8
 
 
  400 0181 11       		.uleb128 0x11
@@ -452,7 +452,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  428 01be 1E020000 		.4byte	0x21e
  429 01c2 00       		.byte	0
  430 01c3 14       		.uleb128 0x14
- 431 01c4 A3000000 		.4byte	.LASF31
+ 431 01c4 75000000 		.4byte	.LASF31
  432 01c8 01       		.byte	0x1
  433 01c9 84       		.byte	0x84
  434 01ca 2C000000 		.4byte	0x2c
@@ -461,7 +461,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  437 01d6 01       		.uleb128 0x1
  438 01d7 9C       		.byte	0x9c
  439 01d8 15       		.uleb128 0x15
- 440 01d9 77000000 		.4byte	.LASF22
+ 440 01d9 49000000 		.4byte	.LASF22
  441 01dd 01       		.byte	0x1
  442 01de 3A       		.byte	0x3a
  443 01df B9000000 		.4byte	0xb9
@@ -477,28 +477,28 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  453 01f5 03       		.byte	0x3
  454 01f6 00000000 		.4byte	endmem
  455 01fa 08       		.uleb128 0x8
- 456 01fb 1C010000 		.4byte	.LASF17
-ARM GAS  /tmp/ccxKKk99.s 			page 9
+ 456 01fb EE000000 		.4byte	.LASF17
+ARM GAS  /tmp/ccos45wX.s 			page 9
 
 
  457 01ff 01       		.byte	0x1
  458 0200 44       		.byte	0x44
  459 0201 EB000000 		.4byte	0xeb
  460 0205 08       		.uleb128 0x8
- 461 0206 64020000 		.4byte	.LASF18
+ 461 0206 CB010000 		.4byte	.LASF18
  462 020a 01       		.byte	0x1
  463 020b 45       		.byte	0x45
  464 020c EB000000 		.4byte	0xeb
  465 0210 16       		.uleb128 0x16
- 466 0211 66000000 		.4byte	.LASF24
+ 466 0211 38000000 		.4byte	.LASF24
  467 0215 05       		.byte	0x5
  468 0216 ED       		.byte	0xed
  469 0217 16       		.uleb128 0x16
- 470 0218 46000000 		.4byte	.LASF25
+ 470 0218 18000000 		.4byte	.LASF25
  471 021c 05       		.byte	0x5
  472 021d E7       		.byte	0xe7
  473 021e 16       		.uleb128 0x16
- 474 021f 55000000 		.4byte	.LASF26
+ 474 021f 27000000 		.4byte	.LASF26
  475 0223 05       		.byte	0x5
  476 0224 E8       		.byte	0xe8
  477 0225 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  511 001f 16       		.uleb128 0x16
  512 0020 00       		.byte	0
  513 0021 03       		.uleb128 0x3
-ARM GAS  /tmp/ccxKKk99.s 			page 10
+ARM GAS  /tmp/ccos45wX.s 			page 10
 
 
  514 0022 0E       		.uleb128 0xe
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  568 0058 18       		.uleb128 0x18
  569 0059 9742     		.uleb128 0x2117
  570 005b 19       		.uleb128 0x19
-ARM GAS  /tmp/ccxKKk99.s 			page 11
+ARM GAS  /tmp/ccos45wX.s 			page 11
 
 
  571 005c 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  625 0092 40       		.uleb128 0x40
  626 0093 18       		.uleb128 0x18
  627 0094 9742     		.uleb128 0x2117
-ARM GAS  /tmp/ccxKKk99.s 			page 12
+ARM GAS  /tmp/ccos45wX.s 			page 12
 
 
  628 0096 19       		.uleb128 0x19
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  682 00ce 34       		.uleb128 0x34
  683 00cf 00       		.byte	0
  684 00d0 03       		.uleb128 0x3
-ARM GAS  /tmp/ccxKKk99.s 			page 13
+ARM GAS  /tmp/ccos45wX.s 			page 13
 
 
  685 00d1 08       		.uleb128 0x8
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  739 010c 19       		.uleb128 0x19
  740 010d 49       		.uleb128 0x49
  741 010e 13       		.uleb128 0x13
-ARM GAS  /tmp/ccxKKk99.s 			page 14
+ARM GAS  /tmp/ccos45wX.s 			page 14
 
 
  742 010f 11       		.uleb128 0x11
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  796 0016 16000000 		.4byte	.LVL2
  797 001a 1E000000 		.4byte	.LVL4
  798 001e 0100     		.2byte	0x1
-ARM GAS  /tmp/ccxKKk99.s 			page 15
+ARM GAS  /tmp/ccos45wX.s 			page 15
 
 
  799 0020 53       		.byte	0x53
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  853              	.LLST3:
  854 009a 16000000 		.4byte	.LVL10
  855 009e 19000000 		.4byte	.LVL11-1
-ARM GAS  /tmp/ccxKKk99.s 			page 16
+ARM GAS  /tmp/ccos45wX.s 			page 16
 
 
  856 00a2 0100     		.2byte	0x1
@@ -947,208 +947,206 @@ ARM GAS  /tmp/ccxKKk99.s 			page 1
  899 003c 00000000 		.4byte	0
  900              		.section	.debug_line,"",%progbits
  901              	.Ldebug_line0:
- 902 0000 5F010000 		.section	.debug_str,"MS",%progbits,1
- 902      02000101 
+ 902 0000 53010000 		.section	.debug_str,"MS",%progbits,1
+ 902      0200F500 
  902      00000201 
  902      FB0E0D00 
  902      01010101 
  903              	.LASF23:
  904 0000 656E646D 		.ascii	"endmem\000"
  904      656D00
- 905              	.LASF28:
- 906 0007 2E2E2F2E 		.ascii	"../../ChibiOS_2.6.5/os/kernel/src/chmemcore.c\000"
- 906      2E2F4368 
-ARM GAS  /tmp/ccxKKk99.s 			page 17
+ 905              	.LASF3:
+ 906 0007 5F5F7569 		.ascii	"__uint8_t\000"
+ 906      6E74385F 
+ARM GAS  /tmp/ccos45wX.s 			page 17
 
 
- 906      6962694F 
- 906      535F322E 
- 906      362E352F 
- 907              	.LASF3:
- 908 0035 5F5F7569 		.ascii	"__uint8_t\000"
- 908      6E74385F 
- 908      7400
- 909              	.LASF2:
- 910 003f 73697A65 		.ascii	"size_t\000"
- 910      5F7400
- 911              	.LASF25:
- 912 0046 6462675F 		.ascii	"dbg_check_lock\000"
+ 906      7400
+ 907              	.LASF2:
+ 908 0011 73697A65 		.ascii	"size_t\000"
+ 908      5F7400
+ 909              	.LASF25:
+ 910 0018 6462675F 		.ascii	"dbg_check_lock\000"
+ 910      63686563 
+ 910      6B5F6C6F 
+ 910      636B00
+ 911              	.LASF26:
+ 912 0027 6462675F 		.ascii	"dbg_check_unlock\000"
  912      63686563 
- 912      6B5F6C6F 
- 912      636B00
- 913              	.LASF26:
- 914 0055 6462675F 		.ascii	"dbg_check_unlock\000"
- 914      63686563 
- 914      6B5F756E 
- 914      6C6F636B 
+ 912      6B5F756E 
+ 912      6C6F636B 
+ 912      00
+ 913              	.LASF24:
+ 914 0038 63684462 		.ascii	"chDbgCheckClassI\000"
+ 914      67436865 
+ 914      636B436C 
+ 914      61737349 
  914      00
- 915              	.LASF24:
- 916 0066 63684462 		.ascii	"chDbgCheckClassI\000"
- 916      67436865 
- 916      636B436C 
- 916      61737349 
- 916      00
- 917              	.LASF22:
- 918 0077 6E657874 		.ascii	"nextmem\000"
- 918      6D656D00 
- 919              	.LASF19:
- 920 007f 6368436F 		.ascii	"chCoreAllocI\000"
- 920      7265416C 
- 920      6C6F6349 
+ 915              	.LASF22:
+ 916 0049 6E657874 		.ascii	"nextmem\000"
+ 916      6D656D00 
+ 917              	.LASF19:
+ 918 0051 6368436F 		.ascii	"chCoreAllocI\000"
+ 918      7265416C 
+ 918      6C6F6349 
+ 918      00
+ 919              	.LASF21:
+ 920 005e 73697A65 		.ascii	"size\000"
  920      00
- 921              	.LASF21:
- 922 008c 73697A65 		.ascii	"size\000"
- 922      00
- 923              	.LASF9:
- 924 0091 6C6F6E67 		.ascii	"long unsigned int\000"
- 924      20756E73 
- 924      69676E65 
- 924      6420696E 
- 924      7400
- 925              	.LASF31:
- 926 00a3 6368436F 		.ascii	"chCoreStatus\000"
- 926      72655374 
- 926      61747573 
- 926      00
- 927              	.LASF6:
- 928 00b0 73686F72 		.ascii	"short unsigned int\000"
- 928      7420756E 
- 928      7369676E 
- 928      65642069 
- 928      6E7400
- 929              	.LASF13:
- 930 00c3 75696E74 		.ascii	"uint32_t\000"
-ARM GAS  /tmp/ccxKKk99.s 			page 18
+ 921              	.LASF9:
+ 922 0063 6C6F6E67 		.ascii	"long unsigned int\000"
+ 922      20756E73 
+ 922      69676E65 
+ 922      6420696E 
+ 922      7400
+ 923              	.LASF31:
+ 924 0075 6368436F 		.ascii	"chCoreStatus\000"
+ 924      72655374 
+ 924      61747573 
+ 924      00
+ 925              	.LASF6:
+ 926 0082 73686F72 		.ascii	"short unsigned int\000"
+ 926      7420756E 
+ 926      7369676E 
+ 926      65642069 
+ 926      6E7400
+ 927              	.LASF13:
+ 928 0095 75696E74 		.ascii	"uint32_t\000"
+ 928      33325F74 
+ 928      00
+ 929              	.LASF4:
+ 930 009e 756E7369 		.ascii	"unsigned char\000"
+ 930      676E6564 
+ 930      20636861 
+ARM GAS  /tmp/ccos45wX.s 			page 18
 
 
- 930      33325F74 
- 930      00
- 931              	.LASF4:
- 932 00cc 756E7369 		.ascii	"unsigned char\000"
- 932      676E6564 
- 932      20636861 
- 932      7200
- 933              	.LASF8:
- 934 00da 5F5F7569 		.ascii	"__uint32_t\000"
- 934      6E743332 
- 934      5F7400
- 935              	.LASF30:
- 936 00e5 5F636F72 		.ascii	"_core_init\000"
- 936      655F696E 
- 936      697400
- 937              	.LASF0:
- 938 00f0 756E7369 		.ascii	"unsigned int\000"
- 938      676E6564 
- 938      20696E74 
- 938      00
- 939              	.LASF11:
- 940 00fd 6C6F6E67 		.ascii	"long long unsigned int\000"
- 940      206C6F6E 
- 940      6720756E 
- 940      7369676E 
- 940      65642069 
- 941              	.LASF12:
- 942 0114 75696E74 		.ascii	"uint8_t\000"
- 942      385F7400 
- 943              	.LASF17:
- 944 011c 5F5F6865 		.ascii	"__heap_base__\000"
- 944      61705F62 
- 944      6173655F 
- 944      5F00
- 945              	.LASF27:
- 946 012a 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mcpu=cortex-m4 -"
- 946      4320342E 
- 946      392E3320 
- 946      32303135 
- 946      30353239 
- 947 015d 6D6E6F2D 		.ascii	"mno-thumb-interwork -mthumb -ggdb -O2 -fomit-frame-"
- 947      7468756D 
- 947      622D696E 
- 947      74657277 
- 947      6F726B20 
- 948 0190 706F696E 		.ascii	"pointer -falign-functions=16 -ffunction-sections -f"
- 948      74657220 
- 948      2D66616C 
- 948      69676E2D 
- 948      66756E63 
- 949 01c3 64617461 		.ascii	"data-sections -fno-common\000"
- 949      2D736563 
- 949      74696F6E 
- 949      73202D66 
- 949      6E6F2D63 
- 950              	.LASF15:
- 951 01dd 73697A65 		.ascii	"sizetype\000"
-ARM GAS  /tmp/ccxKKk99.s 			page 19
+ 930      7200
+ 931              	.LASF8:
+ 932 00ac 5F5F7569 		.ascii	"__uint32_t\000"
+ 932      6E743332 
+ 932      5F7400
+ 933              	.LASF30:
+ 934 00b7 5F636F72 		.ascii	"_core_init\000"
+ 934      655F696E 
+ 934      697400
+ 935              	.LASF0:
+ 936 00c2 756E7369 		.ascii	"unsigned int\000"
+ 936      676E6564 
+ 936      20696E74 
+ 936      00
+ 937              	.LASF11:
+ 938 00cf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 938      206C6F6E 
+ 938      6720756E 
+ 938      7369676E 
+ 938      65642069 
+ 939              	.LASF12:
+ 940 00e6 75696E74 		.ascii	"uint8_t\000"
+ 940      385F7400 
+ 941              	.LASF17:
+ 942 00ee 5F5F6865 		.ascii	"__heap_base__\000"
+ 942      61705F62 
+ 942      6173655F 
+ 942      5F00
+ 943              	.LASF27:
+ 944 00fc 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mcpu=cortex-m4 -"
+ 944      4320342E 
+ 944      392E3320 
+ 944      32303135 
+ 944      30353239 
+ 945 012f 6D6E6F2D 		.ascii	"mno-thumb-interwork -mthumb -ggdb -O2 -fomit-frame-"
+ 945      7468756D 
+ 945      622D696E 
+ 945      74657277 
+ 945      6F726B20 
+ 946 0162 706F696E 		.ascii	"pointer -falign-functions=16 -ffunction-sections -f"
+ 946      74657220 
+ 946      2D66616C 
+ 946      69676E2D 
+ 946      66756E63 
+ 947 0195 64617461 		.ascii	"data-sections -fno-common\000"
+ 947      2D736563 
+ 947      74696F6E 
+ 947      73202D66 
+ 947      6E6F2D63 
+ 948              	.LASF15:
+ 949 01af 73697A65 		.ascii	"sizetype\000"
+ 949      74797065 
+ 949      00
+ 950              	.LASF10:
+ 951 01b8 6C6F6E67 		.ascii	"long long int\000"
+ 951      206C6F6E 
+ 951      6720696E 
+ARM GAS  /tmp/ccos45wX.s 			page 19
 
 
- 951      74797065 
- 951      00
- 952              	.LASF29:
- 953 01e6 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
- 953      652F6E61 
- 953      6D763139 
- 953      39342F43 
- 953      46534431 
- 954 0219 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC (back"
- 954      3246342F 
- 954      656D6265 
- 954      64646564 
- 954      2F436869 
- 955 024c 75703929 		.ascii	"up9)\000"
+ 951      7400
+ 952              	.LASF16:
+ 953 01c6 63686172 		.ascii	"char\000"
+ 953      00
+ 954              	.LASF18:
+ 955 01cb 5F5F6865 		.ascii	"__heap_end__\000"
+ 955      61705F65 
+ 955      6E645F5F 
  955      00
- 956              	.LASF10:
- 957 0251 6C6F6E67 		.ascii	"long long int\000"
- 957      206C6F6E 
- 957      6720696E 
- 957      7400
- 958              	.LASF16:
- 959 025f 63686172 		.ascii	"char\000"
- 959      00
- 960              	.LASF18:
- 961 0264 5F5F6865 		.ascii	"__heap_end__\000"
- 961      61705F65 
- 961      6E645F5F 
- 961      00
- 962              	.LASF5:
- 963 0271 73686F72 		.ascii	"short int\000"
- 963      7420696E 
- 963      7400
- 964              	.LASF20:
- 965 027b 6368436F 		.ascii	"chCoreAlloc\000"
- 965      7265416C 
- 965      6C6F6300 
- 966              	.LASF7:
- 967 0287 6C6F6E67 		.ascii	"long int\000"
- 967      20696E74 
- 967      00
- 968              	.LASF1:
- 969 0290 7369676E 		.ascii	"signed char\000"
- 969      65642063 
- 969      68617200 
- 970              	.LASF14:
- 971 029c 5F426F6F 		.ascii	"_Bool\000"
- 971      6C00
- 972              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccxKKk99.s 			page 20
+ 956              	.LASF29:
+ 957 01d8 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
+ 957      652F6E61 
+ 957      6D763139 
+ 957      39342F43 
+ 957      46534431 
+ 958 020b 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC\000"
+ 958      3246342F 
+ 958      656D6265 
+ 958      64646564 
+ 958      2F436869 
+ 959              	.LASF5:
+ 960 0239 73686F72 		.ascii	"short int\000"
+ 960      7420696E 
+ 960      7400
+ 961              	.LASF20:
+ 962 0243 6368436F 		.ascii	"chCoreAlloc\000"
+ 962      7265416C 
+ 962      6C6F6300 
+ 963              	.LASF7:
+ 964 024f 6C6F6E67 		.ascii	"long int\000"
+ 964      20696E74 
+ 964      00
+ 965              	.LASF1:
+ 966 0258 7369676E 		.ascii	"signed char\000"
+ 966      65642063 
+ 966      68617200 
+ 967              	.LASF28:
+ 968 0264 43686962 		.ascii	"ChibiOS_2.6.5/os/kernel/src/chmemcore.c\000"
+ 968      694F535F 
+ 968      322E362E 
+ 968      352F6F73 
+ 968      2F6B6572 
+ 969              	.LASF14:
+ 970 028c 5F426F6F 		.ascii	"_Bool\000"
+ 970      6C00
+ 971              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
+ARM GAS  /tmp/ccos45wX.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 chmemcore.c
-     /tmp/ccxKKk99.s:19     .text._core_init:0000000000000000 $t
-     /tmp/ccxKKk99.s:25     .text._core_init:0000000000000000 _core_init
-     /tmp/ccxKKk99.s:53     .text._core_init:0000000000000018 $d
-     /tmp/ccxKKk99.s:61     .text.chCoreAllocI:0000000000000000 $t
-     /tmp/ccxKKk99.s:67     .text.chCoreAllocI:0000000000000000 chCoreAllocI
-     /tmp/ccxKKk99.s:110    .text.chCoreAllocI:0000000000000024 $d
-     /tmp/ccxKKk99.s:116    .text.chCoreAlloc:0000000000000000 $t
-     /tmp/ccxKKk99.s:122    .text.chCoreAlloc:0000000000000000 chCoreAlloc
-     /tmp/ccxKKk99.s:171    .text.chCoreStatus:0000000000000000 $t
-     /tmp/ccxKKk99.s:177    .text.chCoreStatus:0000000000000000 chCoreStatus
-     /tmp/ccxKKk99.s:195    .text.chCoreStatus:000000000000000c $d
-     /tmp/ccxKKk99.s:201    .bss.endmem:0000000000000000 $d
-     /tmp/ccxKKk99.s:205    .bss.endmem:0000000000000000 endmem
-     /tmp/ccxKKk99.s:208    .bss.nextmem:0000000000000000 $d
-     /tmp/ccxKKk99.s:212    .bss.nextmem:0000000000000000 nextmem
+     /tmp/ccos45wX.s:19     .text._core_init:0000000000000000 $t
+     /tmp/ccos45wX.s:25     .text._core_init:0000000000000000 _core_init
+     /tmp/ccos45wX.s:53     .text._core_init:0000000000000018 $d
+     /tmp/ccos45wX.s:61     .text.chCoreAllocI:0000000000000000 $t
+     /tmp/ccos45wX.s:67     .text.chCoreAllocI:0000000000000000 chCoreAllocI
+     /tmp/ccos45wX.s:110    .text.chCoreAllocI:0000000000000024 $d
+     /tmp/ccos45wX.s:116    .text.chCoreAlloc:0000000000000000 $t
+     /tmp/ccos45wX.s:122    .text.chCoreAlloc:0000000000000000 chCoreAlloc
+     /tmp/ccos45wX.s:171    .text.chCoreStatus:0000000000000000 $t
+     /tmp/ccos45wX.s:177    .text.chCoreStatus:0000000000000000 chCoreStatus
+     /tmp/ccos45wX.s:195    .text.chCoreStatus:000000000000000c $d
+     /tmp/ccos45wX.s:201    .bss.endmem:0000000000000000 $d
+     /tmp/ccos45wX.s:205    .bss.endmem:0000000000000000 endmem
+     /tmp/ccos45wX.s:208    .bss.nextmem:0000000000000000 $d
+     /tmp/ccos45wX.s:212    .bss.nextmem:0000000000000000 nextmem
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

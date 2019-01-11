@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccbu0Mqa.s 			page 1
+ARM GAS  /tmp/ccvIjs5O.s 			page 1
 
 
    1              		.syntax unified
@@ -26,7 +26,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
   23              		.type	put, %function
   24              	put:
   25              	.LFB9:
-  26              		.file 1 "../../ChibiOS_2.6.5/os/various/memstreams.c"
+  26              		.file 1 "ChibiOS_2.6.5/os/various/memstreams.c"
   27              		.loc 1 66 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
   55 001a 7047     		bx	lr
   56              		.cfi_endproc
   57              	.LFE9:
-ARM GAS  /tmp/ccbu0Mqa.s 			page 2
+ARM GAS  /tmp/ccvIjs5O.s 			page 2
 
 
   58              		.size	put, .-put
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  112              		@ frame_needed = 0, uses_anonymous_args = 0
  113              	.LVL9:
  114 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  /tmp/ccbu0Mqa.s 			page 3
+ARM GAS  /tmp/ccvIjs5O.s 			page 3
 
 
  115              		.cfi_def_cfa_offset 16
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  169              		.cfi_offset 4, -12
  170              		.cfi_offset 5, -8
  171              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccbu0Mqa.s 			page 4
+ARM GAS  /tmp/ccvIjs5O.s 			page 4
 
 
  172              		.loc 1 49 0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  226              		.loc 1 108 0
  227 000a 8260     		str	r2, [r0, #8]
  228              		.loc 1 109 0
-ARM GAS  /tmp/ccbu0Mqa.s 			page 5
+ARM GAS  /tmp/ccvIjs5O.s 			page 5
 
 
  229 000c C360     		str	r3, [r0, #12]
@@ -271,8 +271,8 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  256              		.file 2 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h"
  257              		.file 3 "/usr/include/newlib/machine/_default_types.h"
  258              		.file 4 "/usr/include/newlib/sys/_stdint.h"
- 259              		.file 5 "../../ChibiOS_2.6.5/os/ports/GCC/ARMCMx/chtypes.h"
- 260              		.file 6 "../../ChibiOS_2.6.5/os/various/memstreams.h"
+ 259              		.file 5 "ChibiOS_2.6.5/os/ports/GCC/ARMCMx/chtypes.h"
+ 260              		.file 6 "ChibiOS_2.6.5/os/various/memstreams.h"
  261              		.section	.debug_info,"",%progbits
  262              	.Ldebug_info0:
  263 0000 B6030000 		.4byte	0x3b6
@@ -280,10 +280,10 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  265 0006 00000000 		.4byte	.Ldebug_abbrev0
  266 000a 04       		.byte	0x4
  267 000b 01       		.uleb128 0x1
- 268 000c EA000000 		.4byte	.LASF26
+ 268 000c BE000000 		.4byte	.LASF26
  269 0010 01       		.byte	0x1
- 270 0011 47000000 		.4byte	.LASF27
- 271 0015 AE010000 		.4byte	.LASF28
+ 270 0011 F6010000 		.4byte	.LASF27
+ 271 0015 95010000 		.4byte	.LASF28
  272 0019 00000000 		.4byte	.Ldebug_ranges0+0
  273 001d 00000000 		.4byte	0
  274 0021 00000000 		.4byte	.Ldebug_line0
@@ -298,11 +298,11 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  283 0033 37000000 		.4byte	0x37
  284 0037 04       		.uleb128 0x4
  285 0038 04       		.byte	0x4
-ARM GAS  /tmp/ccbu0Mqa.s 			page 6
+ARM GAS  /tmp/ccvIjs5O.s 			page 6
 
 
  286 0039 07       		.byte	0x7
- 287 003a B8000000 		.4byte	.LASF0
+ 287 003a 8C000000 		.4byte	.LASF0
  288 003e 04       		.uleb128 0x4
  289 003f 01       		.byte	0x1
  290 0040 06       		.byte	0x6
@@ -315,11 +315,11 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  297 0050 04       		.uleb128 0x4
  298 0051 01       		.byte	0x1
  299 0052 08       		.byte	0x8
- 300 0053 86000000 		.4byte	.LASF4
+ 300 0053 5A000000 		.4byte	.LASF4
  301 0057 04       		.uleb128 0x4
  302 0058 02       		.byte	0x2
  303 0059 05       		.byte	0x5
- 304 005a 33020000 		.4byte	.LASF5
+ 304 005a 23020000 		.4byte	.LASF5
  305 005e 04       		.uleb128 0x4
  306 005f 02       		.byte	0x2
  307 0060 07       		.byte	0x7
@@ -332,48 +332,48 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  314 0070 04       		.uleb128 0x4
  315 0071 04       		.byte	0x4
  316 0072 05       		.byte	0x5
- 317 0073 4B020000 		.4byte	.LASF8
+ 317 0073 3B020000 		.4byte	.LASF8
  318 0077 04       		.uleb128 0x4
  319 0078 04       		.byte	0x4
  320 0079 07       		.byte	0x7
- 321 007a A6000000 		.4byte	.LASF9
+ 321 007a 7A000000 		.4byte	.LASF9
  322 007e 04       		.uleb128 0x4
  323 007f 08       		.byte	0x8
  324 0080 05       		.byte	0x5
- 325 0081 19020000 		.4byte	.LASF10
+ 325 0081 82010000 		.4byte	.LASF10
  326 0085 04       		.uleb128 0x4
  327 0086 08       		.byte	0x8
  328 0087 07       		.byte	0x7
- 329 0088 C5000000 		.4byte	.LASF11
+ 329 0088 99000000 		.4byte	.LASF11
  330 008c 04       		.uleb128 0x4
  331 008d 04       		.byte	0x4
  332 008e 07       		.byte	0x7
- 333 008f A5010000 		.4byte	.LASF12
+ 333 008f 79010000 		.4byte	.LASF12
  334 0093 05       		.uleb128 0x5
  335 0094 04       		.byte	0x4
  336 0095 04       		.uleb128 0x4
  337 0096 01       		.byte	0x1
  338 0097 08       		.byte	0x8
- 339 0098 27020000 		.4byte	.LASF13
+ 339 0098 90010000 		.4byte	.LASF13
  340 009c 03       		.uleb128 0x3
- 341 009d DC000000 		.4byte	.LASF14
+ 341 009d B0000000 		.4byte	.LASF14
  342 00a1 04       		.byte	0x4
-ARM GAS  /tmp/ccbu0Mqa.s 			page 7
+ARM GAS  /tmp/ccvIjs5O.s 			page 7
 
 
  343 00a2 14       		.byte	0x14
  344 00a3 45000000 		.4byte	0x45
  345 00a7 03       		.uleb128 0x3
- 346 00a8 9D010000 		.4byte	.LASF15
+ 346 00a8 71010000 		.4byte	.LASF15
  347 00ac 04       		.byte	0x4
  348 00ad 1F       		.byte	0x1f
  349 00ae 65000000 		.4byte	0x65
  350 00b2 04       		.uleb128 0x4
  351 00b3 01       		.byte	0x1
  352 00b4 02       		.byte	0x2
- 353 00b5 66020000 		.4byte	.LASF16
+ 353 00b5 56020000 		.4byte	.LASF16
  354 00b9 03       		.uleb128 0x3
- 355 00ba E4000000 		.4byte	.LASF17
+ 355 00ba B8000000 		.4byte	.LASF17
  356 00be 05       		.byte	0x5
  357 00bf 31       		.byte	0x31
  358 00c0 A7000000 		.4byte	0xa7
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  397 011d 2C000000 		.4byte	0x2c
  398 0121 00       		.byte	0
  399 0122 06       		.uleb128 0x6
-ARM GAS  /tmp/ccbu0Mqa.s 			page 8
+ARM GAS  /tmp/ccvIjs5O.s 			page 8
 
 
  400 0123 04       		.byte	0x4
@@ -435,19 +435,19 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  411 013d 04       		.byte	0x4
  412 013e 28010000 		.4byte	0x128
  413 0142 0A       		.uleb128 0xa
- 414 0143 79000000 		.4byte	.LASF29
+ 414 0143 4D000000 		.4byte	.LASF29
  415 0147 10       		.byte	0x10
  416 0148 06       		.byte	0x6
  417 0149 3D       		.byte	0x3d
  418 014a 7F010000 		.4byte	0x17f
  419 014e 0B       		.uleb128 0xb
- 420 014f 73000000 		.4byte	.LASF18
+ 420 014f 47000000 		.4byte	.LASF18
  421 0153 06       		.byte	0x6
  422 0154 3E       		.byte	0x3e
  423 0155 03010000 		.4byte	0x103
  424 0159 00       		.byte	0
  425 015a 0B       		.uleb128 0xb
- 426 015b A1000000 		.4byte	.LASF19
+ 426 015b 75000000 		.4byte	.LASF19
  427 015f 06       		.byte	0x6
  428 0160 3E       		.byte	0x3e
  429 0161 22010000 		.4byte	0x122
@@ -477,8 +477,8 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  453 018e C4010000 		.4byte	0x1c4
  454 0192 00       		.byte	0
  455 0193 0B       		.uleb128 0xb
- 456 0194 3D020000 		.4byte	.LASF20
-ARM GAS  /tmp/ccbu0Mqa.s 			page 9
+ 456 0194 2D020000 		.4byte	.LASF20
+ARM GAS  /tmp/ccvIjs5O.s 			page 9
 
 
  457 0198 06       		.byte	0x6
@@ -486,7 +486,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  459 019a D9000000 		.4byte	0xd9
  460 019e 04       		.byte	0x4
  461 019f 0B       		.uleb128 0xb
- 462 01a0 61020000 		.4byte	.LASF21
+ 462 01a0 51020000 		.4byte	.LASF21
  463 01a4 06       		.byte	0x6
  464 01a5 49       		.byte	0x49
  465 01a6 2C000000 		.4byte	0x2c
@@ -498,7 +498,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  471 01b2 2C000000 		.4byte	0x2c
  472 01b6 0C       		.byte	0xc
  473 01b7 0B       		.uleb128 0xb
- 474 01b8 2C020000 		.4byte	.LASF22
+ 474 01b8 1C020000 		.4byte	.LASF22
  475 01bc 06       		.byte	0x6
  476 01bd 49       		.byte	0x49
  477 01be 2C000000 		.4byte	0x2c
@@ -510,7 +510,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  483 01ca 09       		.uleb128 0x9
  484 01cb 42010000 		.4byte	0x142
  485 01cf 03       		.uleb128 0x3
- 486 01d0 54020000 		.4byte	.LASF23
+ 486 01d0 44020000 		.4byte	.LASF23
  487 01d4 06       		.byte	0x6
  488 01d5 4A       		.byte	0x4a
  489 01d6 7F010000 		.4byte	0x17f
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  511 020a 01       		.uleb128 0x1
  512 020b 51       		.byte	0x51
  513 020c 11       		.uleb128 0x11
-ARM GAS  /tmp/ccbu0Mqa.s 			page 10
+ARM GAS  /tmp/ccvIjs5O.s 			page 10
 
 
  514 020d 6D737000 		.ascii	"msp\000"
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  568 028d 0F       		.uleb128 0xf
  569 028e 627000   		.ascii	"bp\000"
  570 0291 01       		.byte	0x1
-ARM GAS  /tmp/ccbu0Mqa.s 			page 11
+ARM GAS  /tmp/ccvIjs5O.s 			page 11
 
 
  571 0292 38       		.byte	0x38
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  625 0300 59010000 		.4byte	.LLST10
  626 0304 0F       		.uleb128 0xf
  627 0305 6E00     		.ascii	"n\000"
-ARM GAS  /tmp/ccbu0Mqa.s 			page 12
+ARM GAS  /tmp/ccvIjs5O.s 			page 12
 
 
  628 0307 01       		.byte	0x1
@@ -690,7 +690,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  654 0336 00       		.byte	0
  655 0337 00       		.byte	0
  656 0338 15       		.uleb128 0x15
- 657 0339 94000000 		.4byte	.LASF30
+ 657 0339 68000000 		.4byte	.LASF30
  658 033d 01       		.byte	0x1
  659 033e 67       		.byte	0x67
  660 033f 00000000 		.4byte	.LFB11
@@ -706,19 +706,19 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  670 0358 01       		.uleb128 0x1
  671 0359 50       		.byte	0x50
  672 035a 16       		.uleb128 0x16
- 673 035b 3D020000 		.4byte	.LASF20
+ 673 035b 2D020000 		.4byte	.LASF20
  674 035f 01       		.byte	0x1
  675 0360 67       		.byte	0x67
  676 0361 D9000000 		.4byte	0xd9
  677 0365 B6010000 		.4byte	.LLST13
  678 0369 17       		.uleb128 0x17
- 679 036a 61020000 		.4byte	.LASF21
+ 679 036a 51020000 		.4byte	.LASF21
  680 036e 01       		.byte	0x1
  681 036f 68       		.byte	0x68
  682 0370 2C000000 		.4byte	0x2c
  683 0374 01       		.uleb128 0x1
  684 0375 52       		.byte	0x52
-ARM GAS  /tmp/ccbu0Mqa.s 			page 13
+ARM GAS  /tmp/ccvIjs5O.s 			page 13
 
 
  685 0376 10       		.uleb128 0x10
@@ -738,7 +738,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  699 0390 03       		.byte	0x3
  700 0391 00000000 		.4byte	vmt
  701 0395 19       		.uleb128 0x19
- 702 0396 44020000 		.4byte	.LASF31
+ 702 0396 34020000 		.4byte	.LASF31
  703 039a 93000000 		.4byte	0x93
  704 039e B2030000 		.4byte	0x3b2
  705 03a2 08       		.uleb128 0x8
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  739 0014 24       		.uleb128 0x24
  740 0015 00       		.byte	0
  741 0016 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccbu0Mqa.s 			page 14
+ARM GAS  /tmp/ccvIjs5O.s 			page 14
 
 
  742 0017 0B       		.uleb128 0xb
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  796 004d 01       		.uleb128 0x1
  797 004e 13       		.uleb128 0x13
  798 004f 00       		.byte	0
-ARM GAS  /tmp/ccbu0Mqa.s 			page 15
+ARM GAS  /tmp/ccvIjs5O.s 			page 15
 
 
  799 0050 00       		.byte	0
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  853 0086 49       		.uleb128 0x49
  854 0087 13       		.uleb128 0x13
  855 0088 38       		.uleb128 0x38
-ARM GAS  /tmp/ccbu0Mqa.s 			page 16
+ARM GAS  /tmp/ccvIjs5O.s 			page 16
 
 
  856 0089 0B       		.uleb128 0xb
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  910 00c0 00       		.byte	0
  911 00c1 00       		.byte	0
  912 00c2 10       		.uleb128 0x10
-ARM GAS  /tmp/ccbu0Mqa.s 			page 17
+ARM GAS  /tmp/ccvIjs5O.s 			page 17
 
 
  913 00c3 05       		.uleb128 0x5
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  967 00fa 13       		.uleb128 0x13
  968 00fb 898201   		.uleb128 0x4109
  969 00fe 01       		.byte	0x1
-ARM GAS  /tmp/ccbu0Mqa.s 			page 18
+ARM GAS  /tmp/ccvIjs5O.s 			page 18
 
 
  970 00ff 11       		.uleb128 0x11
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1024 0139 00       		.byte	0
  1025 013a 17       		.uleb128 0x17
  1026 013b 05       		.uleb128 0x5
-ARM GAS  /tmp/ccbu0Mqa.s 			page 19
+ARM GAS  /tmp/ccvIjs5O.s 			page 19
 
 
  1027 013c 00       		.byte	0
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1081              	.Ldebug_loc0:
  1082              	.LLST0:
  1083 0000 00000000 		.4byte	.LVL0
-ARM GAS  /tmp/ccbu0Mqa.s 			page 20
+ARM GAS  /tmp/ccvIjs5O.s 			page 20
 
 
  1084 0004 14000000 		.4byte	.LVL1
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1138 008c 0E000000 		.4byte	.LVL6
  1139 0090 14000000 		.4byte	.LVL7
  1140 0094 0100     		.2byte	0x1
-ARM GAS  /tmp/ccbu0Mqa.s 			page 21
+ARM GAS  /tmp/ccvIjs5O.s 			page 21
 
 
  1141 0096 52       		.byte	0x52
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1195 0125 0100     		.2byte	0x1
  1196 0127 50       		.byte	0x50
  1197 0128 06000000 		.4byte	.LVL11
-ARM GAS  /tmp/ccbu0Mqa.s 			page 22
+ARM GAS  /tmp/ccvIjs5O.s 			page 22
 
 
  1198 012c 26000000 		.4byte	.LFE8
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1252 01ba 0A000000 		.4byte	.LVL21
  1253 01be 0100     		.2byte	0x1
  1254 01c0 51       		.byte	0x51
-ARM GAS  /tmp/ccbu0Mqa.s 			page 23
+ARM GAS  /tmp/ccvIjs5O.s 			page 23
 
 
  1255 01c1 0A000000 		.4byte	.LVL21
@@ -1364,8 +1364,8 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1295 002c 00000000 		.4byte	0
  1296              		.section	.debug_line,"",%progbits
  1297              	.Ldebug_line0:
- 1298 0000 87010000 		.section	.debug_str,"MS",%progbits,1
- 1298      02001101 
+ 1298 0000 7B010000 		.section	.debug_str,"MS",%progbits,1
+ 1298      02000501 
  1298      00000201 
  1298      FB0E0D00 
  1298      01010101 
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1302      5F7400
  1303              	.LASF7:
  1304 0011 5F5F696E 		.ascii	"__int32_t\000"
-ARM GAS  /tmp/ccbu0Mqa.s 			page 24
+ARM GAS  /tmp/ccvIjs5O.s 			page 24
 
 
  1304      7433325F 
@@ -1399,158 +1399,156 @@ ARM GAS  /tmp/ccbu0Mqa.s 			page 1
  1312      7369676E 
  1312      65642069 
  1312      6E7400
- 1313              	.LASF27:
- 1314 0047 2E2E2F2E 		.ascii	"../../ChibiOS_2.6.5/os/various/memstreams.c\000"
- 1314      2E2F4368 
- 1314      6962694F 
- 1314      535F322E 
- 1314      362E352F 
- 1315              	.LASF18:
- 1316 0073 77726974 		.ascii	"write\000"
- 1316      6500
- 1317              	.LASF29:
- 1318 0079 4D656D53 		.ascii	"MemStreamVMT\000"
- 1318      74726561 
- 1318      6D564D54 
- 1318      00
- 1319              	.LASF4:
- 1320 0086 756E7369 		.ascii	"unsigned char\000"
- 1320      676E6564 
- 1320      20636861 
- 1320      7200
- 1321              	.LASF30:
- 1322 0094 6D734F62 		.ascii	"msObjectInit\000"
- 1322      6A656374 
- 1322      496E6974 
+ 1313              	.LASF18:
+ 1314 0047 77726974 		.ascii	"write\000"
+ 1314      6500
+ 1315              	.LASF29:
+ 1316 004d 4D656D53 		.ascii	"MemStreamVMT\000"
+ 1316      74726561 
+ 1316      6D564D54 
+ 1316      00
+ 1317              	.LASF4:
+ 1318 005a 756E7369 		.ascii	"unsigned char\000"
+ 1318      676E6564 
+ 1318      20636861 
+ 1318      7200
+ 1319              	.LASF30:
+ 1320 0068 6D734F62 		.ascii	"msObjectInit\000"
+ 1320      6A656374 
+ 1320      496E6974 
+ 1320      00
+ 1321              	.LASF19:
+ 1322 0075 72656164 		.ascii	"read\000"
  1322      00
- 1323              	.LASF19:
- 1324 00a1 72656164 		.ascii	"read\000"
- 1324      00
- 1325              	.LASF9:
- 1326 00a6 6C6F6E67 		.ascii	"long unsigned int\000"
- 1326      20756E73 
- 1326      69676E65 
- 1326      6420696E 
- 1326      7400
- 1327              	.LASF0:
- 1328 00b8 756E7369 		.ascii	"unsigned int\000"
- 1328      676E6564 
- 1328      20696E74 
- 1328      00
- 1329              	.LASF11:
-ARM GAS  /tmp/ccbu0Mqa.s 			page 25
+ 1323              	.LASF9:
+ 1324 007a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1324      20756E73 
+ 1324      69676E65 
+ 1324      6420696E 
+ 1324      7400
+ 1325              	.LASF0:
+ 1326 008c 756E7369 		.ascii	"unsigned int\000"
+ 1326      676E6564 
+ 1326      20696E74 
+ 1326      00
+ 1327              	.LASF11:
+ 1328 0099 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1328      206C6F6E 
+ 1328      6720756E 
+ 1328      7369676E 
+ 1328      65642069 
+ 1329              	.LASF14:
+ARM GAS  /tmp/ccvIjs5O.s 			page 25
 
 
- 1330 00c5 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1330      206C6F6E 
- 1330      6720756E 
- 1330      7369676E 
- 1330      65642069 
- 1331              	.LASF14:
- 1332 00dc 75696E74 		.ascii	"uint8_t\000"
- 1332      385F7400 
- 1333              	.LASF17:
- 1334 00e4 6D73675F 		.ascii	"msg_t\000"
- 1334      7400
- 1335              	.LASF26:
- 1336 00ea 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mcpu=cortex-m4 -"
- 1336      4320342E 
- 1336      392E3320 
- 1336      32303135 
- 1336      30353239 
- 1337 011d 6D6E6F2D 		.ascii	"mno-thumb-interwork -mthumb -ggdb -O2 -fomit-frame-"
- 1337      7468756D 
- 1337      622D696E 
- 1337      74657277 
- 1337      6F726B20 
- 1338 0150 706F696E 		.ascii	"pointer -falign-functions=16 -ffunction-sections -f"
- 1338      74657220 
- 1338      2D66616C 
- 1338      69676E2D 
- 1338      66756E63 
- 1339 0183 64617461 		.ascii	"data-sections -fno-common\000"
- 1339      2D736563 
- 1339      74696F6E 
- 1339      73202D66 
- 1339      6E6F2D63 
- 1340              	.LASF15:
- 1341 019d 696E7433 		.ascii	"int32_t\000"
- 1341      325F7400 
- 1342              	.LASF12:
- 1343 01a5 73697A65 		.ascii	"sizetype\000"
- 1343      74797065 
- 1343      00
- 1344              	.LASF28:
- 1345 01ae 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
- 1345      652F6E61 
- 1345      6D763139 
- 1345      39342F43 
- 1345      46534431 
- 1346 01e1 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC (back"
- 1346      3246342F 
- 1346      656D6265 
- 1346      64646564 
- 1346      2F436869 
- 1347 0214 75703929 		.ascii	"up9)\000"
- 1347      00
- 1348              	.LASF10:
- 1349 0219 6C6F6E67 		.ascii	"long long int\000"
- 1349      206C6F6E 
- 1349      6720696E 
- 1349      7400
-ARM GAS  /tmp/ccbu0Mqa.s 			page 26
+ 1330 00b0 75696E74 		.ascii	"uint8_t\000"
+ 1330      385F7400 
+ 1331              	.LASF17:
+ 1332 00b8 6D73675F 		.ascii	"msg_t\000"
+ 1332      7400
+ 1333              	.LASF26:
+ 1334 00be 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mcpu=cortex-m4 -"
+ 1334      4320342E 
+ 1334      392E3320 
+ 1334      32303135 
+ 1334      30353239 
+ 1335 00f1 6D6E6F2D 		.ascii	"mno-thumb-interwork -mthumb -ggdb -O2 -fomit-frame-"
+ 1335      7468756D 
+ 1335      622D696E 
+ 1335      74657277 
+ 1335      6F726B20 
+ 1336 0124 706F696E 		.ascii	"pointer -falign-functions=16 -ffunction-sections -f"
+ 1336      74657220 
+ 1336      2D66616C 
+ 1336      69676E2D 
+ 1336      66756E63 
+ 1337 0157 64617461 		.ascii	"data-sections -fno-common\000"
+ 1337      2D736563 
+ 1337      74696F6E 
+ 1337      73202D66 
+ 1337      6E6F2D63 
+ 1338              	.LASF15:
+ 1339 0171 696E7433 		.ascii	"int32_t\000"
+ 1339      325F7400 
+ 1340              	.LASF12:
+ 1341 0179 73697A65 		.ascii	"sizetype\000"
+ 1341      74797065 
+ 1341      00
+ 1342              	.LASF10:
+ 1343 0182 6C6F6E67 		.ascii	"long long int\000"
+ 1343      206C6F6E 
+ 1343      6720696E 
+ 1343      7400
+ 1344              	.LASF13:
+ 1345 0190 63686172 		.ascii	"char\000"
+ 1345      00
+ 1346              	.LASF28:
+ 1347 0195 2F686F6D 		.ascii	"/home/namv1994/CFSD19/Christian STM32 code/STM32F4/"
+ 1347      652F6E61 
+ 1347      6D763139 
+ 1347      39342F43 
+ 1347      46534431 
+ 1348 01c8 53544D33 		.ascii	"STM32F4/embedded/ChibiOS/nam-test-USB/USB_CDC\000"
+ 1348      3246342F 
+ 1348      656D6265 
+ 1348      64646564 
+ 1348      2F436869 
+ 1349              	.LASF27:
+ 1350 01f6 43686962 		.ascii	"ChibiOS_2.6.5/os/various/memstreams.c\000"
+ 1350      694F535F 
+ 1350      322E362E 
+ 1350      352F6F73 
+ARM GAS  /tmp/ccvIjs5O.s 			page 26
 
 
- 1350              	.LASF13:
- 1351 0227 63686172 		.ascii	"char\000"
- 1351      00
- 1352              	.LASF22:
- 1353 022c 6F666673 		.ascii	"offset\000"
- 1353      657400
- 1354              	.LASF5:
- 1355 0233 73686F72 		.ascii	"short int\000"
- 1355      7420696E 
- 1355      7400
- 1356              	.LASF20:
- 1357 023d 62756666 		.ascii	"buffer\000"
- 1357      657200
- 1358              	.LASF31:
- 1359 0244 6D656D63 		.ascii	"memcpy\000"
- 1359      707900
- 1360              	.LASF8:
- 1361 024b 6C6F6E67 		.ascii	"long int\000"
- 1361      20696E74 
- 1361      00
- 1362              	.LASF23:
- 1363 0254 4D656D6F 		.ascii	"MemoryStream\000"
- 1363      72795374 
- 1363      7265616D 
- 1363      00
- 1364              	.LASF21:
- 1365 0261 73697A65 		.ascii	"size\000"
- 1365      00
- 1366              	.LASF16:
- 1367 0266 5F426F6F 		.ascii	"_Bool\000"
- 1367      6C00
- 1368              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccbu0Mqa.s 			page 27
+ 1350      2F766172 
+ 1351              	.LASF22:
+ 1352 021c 6F666673 		.ascii	"offset\000"
+ 1352      657400
+ 1353              	.LASF5:
+ 1354 0223 73686F72 		.ascii	"short int\000"
+ 1354      7420696E 
+ 1354      7400
+ 1355              	.LASF20:
+ 1356 022d 62756666 		.ascii	"buffer\000"
+ 1356      657200
+ 1357              	.LASF31:
+ 1358 0234 6D656D63 		.ascii	"memcpy\000"
+ 1358      707900
+ 1359              	.LASF8:
+ 1360 023b 6C6F6E67 		.ascii	"long int\000"
+ 1360      20696E74 
+ 1360      00
+ 1361              	.LASF23:
+ 1362 0244 4D656D6F 		.ascii	"MemoryStream\000"
+ 1362      72795374 
+ 1362      7265616D 
+ 1362      00
+ 1363              	.LASF21:
+ 1364 0251 73697A65 		.ascii	"size\000"
+ 1364      00
+ 1365              	.LASF16:
+ 1366 0256 5F426F6F 		.ascii	"_Bool\000"
+ 1366      6C00
+ 1367              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
+ARM GAS  /tmp/ccvIjs5O.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 memstreams.c
-     /tmp/ccbu0Mqa.s:19     .text.put:0000000000000000 $t
-     /tmp/ccbu0Mqa.s:24     .text.put:0000000000000000 put
-     /tmp/ccbu0Mqa.s:60     .text.get:0000000000000000 $t
-     /tmp/ccbu0Mqa.s:65     .text.get:0000000000000000 get
-     /tmp/ccbu0Mqa.s:102    .text.reads:0000000000000000 $t
-     /tmp/ccbu0Mqa.s:107    .text.reads:0000000000000000 reads
-     /tmp/ccbu0Mqa.s:154    .text.writes:0000000000000000 $t
-     /tmp/ccbu0Mqa.s:159    .text.writes:0000000000000000 writes
-     /tmp/ccbu0Mqa.s:201    .text.msObjectInit:0000000000000000 $t
-     /tmp/ccbu0Mqa.s:207    .text.msObjectInit:0000000000000000 msObjectInit
-     /tmp/ccbu0Mqa.s:240    .text.msObjectInit:0000000000000018 $d
-     /tmp/ccbu0Mqa.s:245    .rodata.vmt:0000000000000000 $d
-     /tmp/ccbu0Mqa.s:249    .rodata.vmt:0000000000000000 vmt
+     /tmp/ccvIjs5O.s:19     .text.put:0000000000000000 $t
+     /tmp/ccvIjs5O.s:24     .text.put:0000000000000000 put
+     /tmp/ccvIjs5O.s:60     .text.get:0000000000000000 $t
+     /tmp/ccvIjs5O.s:65     .text.get:0000000000000000 get
+     /tmp/ccvIjs5O.s:102    .text.reads:0000000000000000 $t
+     /tmp/ccvIjs5O.s:107    .text.reads:0000000000000000 reads
+     /tmp/ccvIjs5O.s:154    .text.writes:0000000000000000 $t
+     /tmp/ccvIjs5O.s:159    .text.writes:0000000000000000 writes
+     /tmp/ccvIjs5O.s:201    .text.msObjectInit:0000000000000000 $t
+     /tmp/ccvIjs5O.s:207    .text.msObjectInit:0000000000000000 msObjectInit
+     /tmp/ccvIjs5O.s:240    .text.msObjectInit:0000000000000018 $d
+     /tmp/ccvIjs5O.s:245    .rodata.vmt:0000000000000000 $d
+     /tmp/ccvIjs5O.s:249    .rodata.vmt:0000000000000000 vmt
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
