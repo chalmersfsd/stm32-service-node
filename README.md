@@ -25,12 +25,14 @@ The code has 4 threads, whose purposes and related functions are described below
   - decodeNextNetstring(): the main reading function. It parses the bytes in receiveBuffer, looking for a valid Netstring by looking for the number of bytes (payload length of Netstring) using strtol. Once that number is found, it checks for the end delimeter of the Netstring (';'); if that is also found, then it means it found a valid Netstring, and will extract & decode the payload in decodeRequest(). The extracted payload is stored in messageBuffer. After that, the read Netstring are removed from receiveBuffer by memmove, and by moving the writePtr.
   - decodeRequest(): decodes the payload based on a pre-defined mesage format. The format is: "set|pinID|value". E.g: "set|compressor|1", "set|ebs_line|0", "set|steer_speed|50000",...
 
-- writeThread: sends measurements to Docker side. The procedure is the opposite of reading: the measurements are first encoded according to the pre-defined format,e.g: "status|ebs_line|1234|ebs_actuator|1234", then encoded as Netstring, and finally sent over USB using sdWriteTimeout().
+- writeThread: sends measurements to Docker side. The procedure is the opposite of reading: the measurements are first encoded according to the pre-defined format,e.g: "status|ebs_line|1234", "status|ebs_actuator|1234", then encoded as Netstring, and finally sent over USB using sdWriteTimeout().
 
 - adcSampleThread: samples the raw Analog measurements.
 
 ### Known issue
-An unknown bug caused the first byte in the sent bytes to appear at the beginning of the received bytes. This only happens when both read & write threads are executed. This prevents the reading thread to succesfully extract the netstring messages (since strtol() only works for strings with leading white spaces). A temporary fix is to add an additional white space character at the begining of the sent bytes. This fix has worked so far with all of the signals included.
+1) An unknown bug caused the first byte in the sent bytes to appear at the beginning of the received bytes. This only happens when both read & write threads are executed. This prevents the reading thread to succesfully extract the netstring messages (since strtol() only works for strings with leading white spaces). A temporary fix is to add an additional white space character at the begining of the sent bytes. This fix has worked so far with all of the signals included.
+
+2) Originally the measurements were sent in a single message, i.e: "status|ebs_line|1234|ebs_actuator|1234", but sometimes this cause the stm to not be able to receive & decode requests. A fix of this is to split the original message into several messages, each containing one measurement.
 
 
 ### To-do
