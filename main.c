@@ -1,12 +1,9 @@
 /*
     ChibiOS/RT - Copyright (C) 2006-2013 Giovanni Di Sirio
-
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
         http://www.apache.org/licenses/LICENSE-2.0
-
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -478,6 +475,20 @@ static msg_t readThread(void *arg) {
   }  	
 }
 
+void writeAnalog(char* payloadBuffer, int payloadLength){
+      char writeBuffer[64];
+			//added a whitespace at the beiginning to fix the unknwon bug
+			int bytesToWrite = sprintf(writeBuffer, " %d:%s;", payloadLength,payloadBuffer);
+  		int bytesToWriteLeft = bytesToWrite;
+  		int bytesWritten = 0;
+  		
+  		while(bytesToWriteLeft > 0){
+  			bytesWritten = sdWriteTimeout(&SDU1, (uint8_t*)writeBuffer, bytesToWrite, timeOut);
+  			bytesToWriteLeft -= bytesWritten;
+  		}
+      chThdSleepMilliseconds(1);
+}
+
 //WRITE THREAD
 static WORKING_AREA(writeThreadArea, 1024);
 static msg_t writeThread(void *arg) {
@@ -496,24 +507,39 @@ static msg_t writeThread(void *arg) {
       bool raw7 = palReadPad(GPIOC, 14); //PC14
       bool raw8 = palReadPad(GPIOC, 15); //PC15
   		//write buffer
-  		char payloadBuffer[256];
+  		char payloadBuffer[64];
   		char writeBuffer[256];
 			
-			/*
-			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d|ebs_actuator|%d|pressure_rag|%d|service_tank|%d|position_rack|%d|steer_pos|%d|asms|%d|clamped_sensor|%d|ebs_ok|%d", raw0, raw1, raw2, raw3, raw4, raw5, raw6, raw7, raw8);
-			*/
-			int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d", raw6);
-			//added a whitespace at the beiginning to fix the unknwon bug
-			int bytesToWrite = sprintf(writeBuffer, " %d:%s;", payloadLength,payloadBuffer);
-  		int bytesToWriteLeft = bytesToWrite;
-  		int bytesWritten = 0;
-  		
-  		while(bytesToWriteLeft > 0){
-  			bytesWritten = sdWriteTimeout(&SDU1, (uint8_t*)writeBuffer, bytesToWrite, timeOut);
-  			bytesToWriteLeft -= bytesWritten;
-  		}
+			
+			//int payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d|ebs_actuator|%d|pressure_rag|%d|service_tank|%d|position_rack|%d|steer_pos|%d|asms|%d|clamped_sensor|%d|ebs_ok|%d", raw0, raw1, raw2, raw3, raw4, raw5, raw6, raw7, raw8);
+			int payloadLength;
+			payloadLength = sprintf(payloadBuffer, "status|ebs_line|%d", raw0);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|ebs_actuator|%d", raw1);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|pressure_rag|%d", raw2);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|service_tank|%d", raw3);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|position_rack|%d", raw4);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|steer_pos|%d", raw5);
+			writeAnalog(payloadBuffer, payloadLength);
 
-  		chThdSleepMilliseconds(10);
+      payloadLength = sprintf(payloadBuffer, "status|asms|%d", raw6);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|clamped_sensor|%d", raw7);
+			writeAnalog(payloadBuffer, payloadLength);
+			
+			payloadLength = sprintf(payloadBuffer, "status|ebs_ok|%d", raw8);
+			writeAnalog(payloadBuffer, payloadLength);
+  		chThdSleepMilliseconds(1);
   	/*
   	 //Debug
 		 bytesToWrite = strlen(receiveBuffer);
