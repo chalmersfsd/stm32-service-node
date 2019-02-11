@@ -10,10 +10,12 @@
 - Dockerized microservice running OpenDLV. This service can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development.
 - Pin configuration is described in "stm32_pin_map.xlsx", and is configured at ChibiOS_2.6.5/board/ST_STM32F4_DISCOVERY/board.h. Change this file if you want another pin config. A copy of this file can also be found in the folder "board".
 
-### Build
-- Build: just type "make"
-- Flash: by st-flash
-  - st-flash write build/ch.bin 0x8000000 
+### Getting it working
+Utilizing Makefile in root directory. Help output is available, free to run `make` and read it.
+* Build all tools, firmware and flash: `make all`
+* Create docker images for building and flashing firmware: `make builder && make flasher`
+* Build firmware (given you have corresponding docker image): `make build`
+* Flash firmware `make flash`
 
 ### Function disceription
 The code has 4 threads, whose purposes and related functions are described below:
