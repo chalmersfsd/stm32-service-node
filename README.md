@@ -39,8 +39,7 @@ The code has 4 threads, whose purposes and related functions are described below
 
 ### To-do
 - Re-calibrate sensor measurements.
-- Analize respons time, especially to critical signals (heart_beat).
+- Analyze response time, especially to critical signals (heart_beat).
 - Re-organize code files. Currently most codes are written in one single main.c file.
-- Dockerize the build-flash procedure
 - Adjust indentations for better code.
 - Continue debugging to find possible bugs
