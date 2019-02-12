@@ -65,7 +65,7 @@ endif
 #
 
 # Define project name here
-PROJECT = ch
+PROJECT = formula_node
 
 # Imported source files and paths
 CHIBIOS = ../ChibiOS_2.6.5
@@ -91,7 +91,7 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/shell.c \
        $(CHIBIOS)/os/various/chprintf.c \
        $(CHIBIOS)/os/various/memstreams.c \
-$(CHIBIOS)/os/various/syscalls.c \
+			 $(CHIBIOS)/os/various/syscalls.c \
        USB/USB.c \
        Protocol/protocol.c \
        main.c
