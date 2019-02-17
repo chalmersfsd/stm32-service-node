@@ -26,11 +26,9 @@
 
 #include "ch.h"
 #include "hal.h"
-#include "test.h"
 
 #include "shell.h"
-#include "chprintf.h"
-#include "chmtx.h"
+// #include "chmtx.h"
 // Here, all the header files for interactively communicating with the Discovery Board are collected.
 #include "USB/USB.h"
 
