@@ -21,7 +21,7 @@ THD_FUNCTION(readThrFunction, arg)
 {
   (void) arg;
   chRegSetThreadName("Read thread");
-  uint8_t readBuffer[128];
+  char readBuffer[128];
   event_listener_t usbData;
   eventflags_t flags;
   int bytesRead = 0;
@@ -34,12 +34,9 @@ THD_FUNCTION(readThrFunction, arg)
     if (flags & CHN_INPUT_AVAILABLE)
     {
       bytesRead = chnReadTimeout(&PORTAB_SDU1, readBuffer, 64, 10);
-      palSetLine(LINE_LED5);
-      chThdSleepMilliseconds(100);
-      palClearLine(LINE_LED5);
       if (bytesRead > 3)
       {
-        decodeNextNetstring((char*)readBuffer, bytesRead);
+        decodeNextNetstring(readBuffer, bytesRead);
       }
     }
   }
@@ -51,15 +48,20 @@ void decodeNextNetstring(char* buffer, int size)
   // ASCII Number representing the length of the payload + ':' + payload + MSG_END
 
   int msg_length = -1;
-  const char lengthDelim = STATUS_DELIMITER;
-  const char endDelim = MSG_END;
   char netstring[64];
+  const char delim1[] = ":";
+  const char delim2[] = ";";
   char *temp = NULL;
+  char *temp1 = NULL;
+  char* copy=  buffer;
+  char** bufferPos = &copy;
 
-  msg_length = atoi(strtok(buffer, &lengthDelim));
+
+  temp1 = strtok_r(copy, delim1, bufferPos);
+  temp = strtok_r(NULL, delim2, bufferPos);
+  msg_length = atoi(temp1);
   if (msg_length != -1 && msg_length < size)
   {
-    temp = strtok(NULL, &endDelim);
     memcpy(netstring, temp, msg_length);
     decodeRequest(netstring);
   }
@@ -74,10 +76,12 @@ void decodeRequest(char* msg){
 
   pinType type;
   unsigned int pinID = 0;
-  const char delim = DELIMITER;
-  char* command = strtok_r(msg, &delim, &msg);
-  char* sensor = strtok_r(NULL, &delim, &msg);
-  char* value = strtok_r(NULL, &delim, &msg);
+  const char delim[] = "|";
+  char* copy = msg;
+  char **temp = &msg;
+  char* command = strtok_r(copy, delim, temp);
+  char* sensor = strtok_r(NULL, delim, temp);
+  char* value = strtok_r(NULL, delim, temp);
   /*
    * Process command
    */
@@ -129,7 +133,7 @@ void decodeRequest(char* msg){
     type = GPIO;
     pinID = 8;
   }
-  else if (strstr(sensor, CLAMP_SET))
+  else if (strstr(sensor, COMPRESSOR))
   {
     type = GPIO;
     pinID = 9;
@@ -189,7 +193,8 @@ void decodeRequest(char* msg){
       palWritePad(GPIOD, pinID, pinValue);
       break;
     case PWM:
-      switch(pinID){
+      switch(pinID)
+      {
         case 5: // linear actuator steer speed
           pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, intValue)); break;
         case 6: // pressure regulator

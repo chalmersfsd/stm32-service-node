@@ -91,7 +91,7 @@ endif
 PROJECT = ch
 
 # Imported source files and paths
-CHIBIOS  := ../../../..
+CHIBIOS  := ./chibios182
 CONFDIR  := ./cfg/stm32f407_discovery
 BUILDDIR := ./build/stm32f407_discovery
 DEPDIR   := ./.dep/stm32f407_discovery
@@ -115,7 +115,6 @@ include $(CHIBIOS)/test/lib/test.mk
 include $(CHIBIOS)/test/rt/rt_test.mk
 include $(CHIBIOS)/test/oslib/oslib_test.mk
 include $(CHIBIOS)/os/hal/lib/streams/streams.mk
-include $(CHIBIOS)/os/various/shell/shell.mk
 
 # Define linker script file here
 LDSCRIPT= $(STARTUPLD)/STM32F407xG.ld
@@ -225,4 +224,4 @@ CPPWARN = -Wall -Wextra -Wundef
 ##############################################################################
 
 RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC
-include $(RULESPATH)/rules.mk
+include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/rules.mk
