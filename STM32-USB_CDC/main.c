@@ -166,7 +166,7 @@ int main(void) {
   /*
    * Create threads.
    */
-  chThdCreateStatic(readThrWA, sizeof(readThrWA), NORMALPRIO, readThrFunction, NULL);
+  chThdCreateStatic(readThrWA, sizeof(readThrWA), HIGHPRIO, readThrFunction, NULL);
   chThdCreateStatic(writeThrWA, sizeof(writeThrWA), NORMALPRIO, writeThrFunction, NULL);
   chThdCreateStatic(usbThreadWA, sizeof(usbThreadWA), NORMALPRIO, usbThreadFunction, NULL);
   chThdCreateStatic(adcSampleThreadWA, sizeof(adcSampleThreadWA), NORMALPRIO, adcSampleThread, NULL);

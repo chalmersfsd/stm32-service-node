@@ -33,7 +33,7 @@ THD_FUNCTION(readThrFunction, arg)
     flags = chEvtGetAndClearFlags(&usbData);
     if (flags & CHN_INPUT_AVAILABLE)
     {
-      bytesRead = chnReadTimeout(&PORTAB_SDU1, readBuffer, 64, 10);
+      bytesRead = chnReadTimeout(&PORTAB_SDU1, readBuffer, 64, 1000);
       if (bytesRead > 3)
       {
         decodeNextNetstring(readBuffer, bytesRead);
@@ -108,7 +108,7 @@ void decodeRequest(char* msg){
     type = GPIO;
     pinID = 2;
   }
-  else if (strstr(sensor, RACK_LEFT))
+  else if (strstr(sensor, SERVICE_BREAK))
   {
     type = GPIO;
     pinID = 3;
