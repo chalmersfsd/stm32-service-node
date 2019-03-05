@@ -14,19 +14,19 @@
 
 extern adcsample_t samples[];
 
-void writeAnalog(char* payloadBuffer, int payloadLength)
-{
-  char writeBuffer[64];
-  int bytesToWrite = sprintf(writeBuffer, "%d:%s;", payloadLength, payloadBuffer);
-  chnWriteTimeout(&PORTAB_SDU1, writeBuffer, bytesToWrite, 10);
-}
-
 THD_FUNCTION(writeThrFunction, arg)
 {
   (void) arg;
+  event_listener_t usbData;
+  eventflags_t flags;
+  int bytesRead = 0;
+  chEvtRegisterMask((event_source_t *)chnGetEventSource(&PORTAB_SDU1), &usbData, EVENT_MASK(1));
+
   chRegSetThreadName("write thread");
-  char payloadBuffer[64];
-  int payloadLength = 0;
+  char payloadBuffer[256];
+  char temp[64];
+  size_t payloadLength = 0;
+  size_t msgLength = 0;
   uint32_t raw0 = 0;
   uint32_t raw1 = 0;
   uint32_t raw2 = 0;
@@ -50,24 +50,32 @@ THD_FUNCTION(writeThrFunction, arg)
     raw7 = palReadPad(GPIOC, 14); //PC14
     raw8 = palReadPad(GPIOC, 15); //PC15
 
-    payloadLength = sprintf(payloadBuffer, "status|ebs_line|%ld", raw0);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|ebs_actuator|%ld", raw1);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|pressure_rag|%ld", raw2);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|service_tank|%ld", raw3);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|position_rack|%ld", raw4);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|steer_pos|%ld", raw5);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|asms|%d", raw6);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|clamped_sensor|%d", raw7);
-    writeAnalog(payloadBuffer, payloadLength);
-    payloadLength = sprintf(payloadBuffer, "status|ebs_ok|%d", raw8);
-    writeAnalog(payloadBuffer, payloadLength);
+    payloadLength = 0;
+    msgLength = sprintf(temp, "status|ebs_line|%ld", raw0);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|ebs_actuator|%ld", raw1);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|pressure_rag|%ld", raw2);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|service_tank|%ld", raw3);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|position_rack|%ld", raw4);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|steer_pos|%ld", raw5);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|asms|%d", raw6);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|clamped_sensor|%d", raw7);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+    msgLength = sprintf(temp, "status|ebs_ok|%d", raw8);
+    payloadLength += sprintf(payloadBuffer+payloadLength, "%d:%s;", msgLength, temp);
+
+//    flags = chEvtGetAndClearFlags(&usbData);
+//    if (flags & CHN_OUTPUT_EMPTY)
+//    {
+    chnWrite(&PORTAB_SDU1, payloadBuffer, payloadLength);
+//    }
+    chEvtWaitAny(EVENT_MASK(1));
 
     chThdSleepMilliseconds(10);
   }

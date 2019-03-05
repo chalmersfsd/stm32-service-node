@@ -167,14 +167,18 @@ int main(void) {
    * Create threads.
    */
   chThdCreateStatic(readThrWA, sizeof(readThrWA), HIGHPRIO, readThrFunction, NULL);
-  chThdCreateStatic(writeThrWA, sizeof(writeThrWA), NORMALPRIO, writeThrFunction, NULL);
+//  chThdCreateStatic(writeThrWA, sizeof(writeThrWA), NORMALPRIO, writeThrFunction, NULL);
   chThdCreateStatic(usbThreadWA, sizeof(usbThreadWA), NORMALPRIO, usbThreadFunction, NULL);
   chThdCreateStatic(adcSampleThreadWA, sizeof(adcSampleThreadWA), NORMALPRIO, adcSampleThread, NULL);
 
   /*
    * Normal main() thread activity, spawning shells.
    */
+//  int intValue = 0;
   while (true) {
-    chThdSleepMilliseconds(10);
+    chThdSleepMicroseconds(1);
+//    intValue+=1;
+//    pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue));
+//    if (intValue > 10000) intValue = 0;
   }
 }

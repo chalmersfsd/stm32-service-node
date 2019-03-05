@@ -16,28 +16,24 @@
 
 void decodeNextNetstring(char* buffer, int size);
 void decodeRequest(char* msg);
+static char netstring[64];
+static char writeBuffer[128];
 
 THD_FUNCTION(readThrFunction, arg)
 {
   (void) arg;
   chRegSetThreadName("Read thread");
   char readBuffer[128];
-  event_listener_t usbData;
-  eventflags_t flags;
   int bytesRead = 0;
-  chEvtRegisterMask((event_source_t *)chnGetEventSource(&PORTAB_SDU1), &usbData, EVENT_MASK(1));
   while (TRUE)
   {
-    chEvtWaitAll(EVENT_MASK(1));
-
-    flags = chEvtGetAndClearFlags(&usbData);
-    if (flags & CHN_INPUT_AVAILABLE)
+    bytesRead = chnReadTimeout(&PORTAB_SDU1, readBuffer, sizeof(readBuffer), 10);
+    if (bytesRead > 3)
     {
-      bytesRead = chnReadTimeout(&PORTAB_SDU1, readBuffer, 64, 1000);
-      if (bytesRead > 3)
-      {
-        decodeNextNetstring(readBuffer, bytesRead);
-      }
+      decodeNextNetstring(readBuffer, bytesRead);
+      memset(readBuffer, 0, sizeof(readBuffer));
+      memset(netstring, 0, sizeof(netstring));
+      memset(writeBuffer, 0, sizeof(writeBuffer));
     }
   }
 }
@@ -48,14 +44,13 @@ void decodeNextNetstring(char* buffer, int size)
   // ASCII Number representing the length of the payload + ':' + payload + MSG_END
 
   int msg_length = -1;
-  char netstring[64];
+
   const char delim1[] = ":";
   const char delim2[] = ";";
   char *temp = NULL;
   char *temp1 = NULL;
   char* copy=  buffer;
   char** bufferPos = &copy;
-
 
   temp1 = strtok_r(copy, delim1, bufferPos);
   temp = strtok_r(NULL, delim2, bufferPos);
@@ -72,6 +67,9 @@ typedef enum {
   PWM = 1,
 } pinType;
 
+const char ack[] = "ACK";
+const char nack[] = "ACK";
+static char buff[64];
 void decodeRequest(char* msg){
 
   pinType type;
@@ -210,4 +208,7 @@ void decodeRequest(char* msg){
     default:
       break;
   }
+  size_t msgLength = sprintf(writeBuffer,"%s|%s|%s|%s;", command, sensor, value, ack);
+  chnWrite(&PORTAB_SDU1, writeBuffer, msgLength);
+  chThdSleepMilliseconds(5);
 }
