@@ -1,25 +1,15 @@
 *****************************************************************************
-** ChibiOS/HAL - Unified USB driver demo.                                  **
+** Chalmers Formula Student Driverless -- stearing/senor node              **
 *****************************************************************************
 
 ** TARGET **
 
-The demo can be compiled to run on multiple STM32 target boards.
+STM32F407VGT6
 
-** The Demo **
+** Chibi studio usage **
 
-The application demonstrates the use of the HAL USB driver.
-
-** Build Procedure **
-
-The command "make" builds the demo for all targets. The demo can be compiled
-using the "GNU ARM Embedded Toolchain" from:
-
-                   https://launchpad.net/gcc-arm-embedded
-
-** Notes **
-
-Some header files used by the demo are not part of ChibiOS but are copyright of
-ST Microelectronics and are licensed under a different license.
-
-                              http://www.st.com
+This project can be opened with Chibistudio as IDE, which supports hardware 
+debugging via ST-LINK. ST-LINK is part of Discovery board and is accessable
+through mini-usb connection (that's how you flash software as well)
+To import the project to a Chibistudio workspace it should be enough to "Import"
+and select this root folder as a root
