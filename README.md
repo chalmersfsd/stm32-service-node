@@ -18,7 +18,7 @@ Utilizing Makefile in root directory. Help output is available, free to run `mak
 * Flash firmware `make flash`
 
 ### Function disceription
-The code has 4 threads, whose purposes and related functions are described below:
+The code has 3 threads, whose purposes and related functions are described below:
 
 - usbThread: blink the orange LED according to the Serial over USB status; slow blink (1Hz) means no connection, and fast blink (2Hz) means good connection.
 
@@ -31,15 +31,7 @@ The code has 4 threads, whose purposes and related functions are described below
 
 - adcSampleThread: samples the raw Analog measurements.
 
-### Known issue
-1) An unknown bug caused the first byte in the sent bytes to appear at the beginning of the received bytes. This only happens when both read & write threads are executed. This prevents the reading thread to succesfully extract the netstring messages (since strtol() only works for strings with leading white spaces). A temporary fix is to add an additional white space character at the begining of the sent bytes. This fix has worked so far with all of the signals included.
-
-2) Originally the measurements were sent in a single message, i.e: "status|ebs_line|1234|ebs_actuator|1234", but sometimes this cause the stm to not be able to receive & decode requests. A fix of this is to split the original message into several messages, each containing one measurement.
-
 
 ### To-do
 - Re-calibrate sensor measurements.
-- Analyze response time, especially to critical signals (heart_beat).
-- Re-organize code files. Currently most codes are written in one single main.c file.
-- Adjust indentations for better code.
 - Continue debugging to find possible bugs
