@@ -25,8 +25,7 @@
 
 #include "usbcfg.h"
 
-#include "readThread.h"
-#include "writeThread.h"
+#include "communicationThread.h"
 #include "adcThread.h"
 
 /*===========================================================================*/
@@ -83,39 +82,10 @@ void PWMInit(void)
   pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
 }
 /*
- * Communication activity thread
- */
-static THD_WORKING_AREA(usbThreadWA, 128);
-static THD_FUNCTION(usbThreadFunction, arg) {
-  (void)arg;
-  chRegSetThreadName("blinker");
-  event_listener_t usbData;
-  eventflags_t flags;
-  int bytesRead = 0;
-  chEvtRegisterMask((event_source_t *)chnGetEventSource(&PORTAB_SDU1), &usbData, EVENT_MASK(1));
-  while (true) {
-    chEvtWaitAny(EVENT_MASK(1));
-    flags = chEvtGetAndClearFlags(&usbData);
-    if (flags & CHN_INPUT_AVAILABLE)
-    {
-      palSetLine(LINE_LED5);
-    }
-    if (flags & CHN_OUTPUT_EMPTY)
-    {
-      palSetLine(LINE_LED6);
-    }
-    chThdSleepMilliseconds(50);
-    palClearLine(LINE_LED5);
-    palClearLine(LINE_LED6);
-    chThdSleepMilliseconds(50);
-  }
-}
-
-/*
  * Thread working areas
  */
-static THD_WORKING_AREA(readThrWA, 1024);
-static THD_WORKING_AREA(writeThrWA, 1024);
+static THD_WORKING_AREA(usbThreadWA, 64);
+static THD_WORKING_AREA(communicationThreadWA, 1024);
 static THD_WORKING_AREA(adcSampleThreadWA, 64);
 
 /*
@@ -166,19 +136,14 @@ int main(void) {
   /*
    * Create threads.
    */
-  chThdCreateStatic(readThrWA, sizeof(readThrWA), HIGHPRIO, readThrFunction, NULL);
-//  chThdCreateStatic(writeThrWA, sizeof(writeThrWA), NORMALPRIO, writeThrFunction, NULL);
+  chThdCreateStatic(communicationThreadWA, sizeof(communicationThreadWA), HIGHPRIO, communicationThrFunction, NULL);
   chThdCreateStatic(usbThreadWA, sizeof(usbThreadWA), NORMALPRIO, usbThreadFunction, NULL);
   chThdCreateStatic(adcSampleThreadWA, sizeof(adcSampleThreadWA), NORMALPRIO, adcSampleThread, NULL);
 
   /*
-   * Normal main() thread activity, spawning shells.
+   * Normal main() thread activity.
    */
-//  int intValue = 0;
   while (true) {
     chThdSleepMicroseconds(1);
-//    intValue+=1;
-//    pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue));
-//    if (intValue > 10000) intValue = 0;
   }
 }

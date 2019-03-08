@@ -8,11 +8,14 @@
 #ifndef SOURCE_PROTOCOL_H_
 #define SOURCE_PROTOCOL_H_
 
-#define DELIMITER  '|'
-#define MSG_END  ';'
+#define DELIMITER  "|"
+#define MSG_END  ";"
 #define SET  "set"
+#define GET "get"
 #define STATUS  "status"
-#define STATUS_DELIMITER ':'
+#define STATUS_DELIMITER ":"
+#define ACK "ACK"
+#define NACK "NACK"
 
 /* --- setter_msgs --- */
 #define CLAMP_SET  "clamp_set"
