@@ -1,5 +1,5 @@
 SOURCE_DIR=$(PWD)/src
-MAKEFILE_DIR=Formula_project
+MAKEFILE_DIR=./
 help: ## === Tools for building and deploying firmware to STM32F407Discovery board ===
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
@@ -21,7 +21,7 @@ build: ## Run the compilation by means of image created by `make builder`
 
 .PHONY: flash
 flash: ## Flash the firmware by means of image created by `make flasher`
-	docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb -v $(SOURCE_DIR)/$(MAKEFILE_DIR)/build:/binaries stm_flasher:latest
+	docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb -v $(SOURCE_DIR)/$(MAKEFILE_DIR)/build/stm32f407_discovery:/binaries stm_flasher:latest
 
 .PHONY: clean
 clean: ## Remove the build

@@ -88,7 +88,7 @@ endif
 #
 
 # Define project name here
-PROJECT = ch
+PROJECT = formula_node
 
 # Imported source files and paths
 CHIBIOS  := ./chibios182
