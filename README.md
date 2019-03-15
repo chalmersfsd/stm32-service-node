@@ -1,14 +1,15 @@
 # stm32-service-node
 
 ### How it works
-- This is firmware for STM32F4 to communicate with the new microservices of CFSD19 over USB serial. This firmware is written in ChibiOS 2.6.5. The service code can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development
-- STM32 receives GPIO/PWM requests from Docker side, and execute these requests. It also continuously sends the analog/digital measurements to Docker side via serial-over-usb connection. The send/receive functions are independent from each other.
+- This is firmware for STM32F4 to communicate with the new microservices of CFSD over USB serial. The service code can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development
+- STM32 receives GPIO/PWM requests from Docker side, and execute these requests.
+- It it request-response communication where Docker side should send requests and STM would respond to them.
 
 ### Dependencies
-- ChibiOS 2.6.5. This is included in the repository.
-- STM32F4 running a serial-over-usb connection, and is connected to host machine, and appears as /dev/ttyACM0.
+- ChibiOS 18.2. This is included in the repository.
+- STM32F4 running a serial-over-usb connection (micro-usb), drivers for the board installed.
 - Dockerized microservice running OpenDLV. This service can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development.
-- Pin configuration is described in "stm32_pin_map.xlsx", and is configured at ChibiOS_2.6.5/board/ST_STM32F4_DISCOVERY/board.h. Change this file if you want another pin config. A copy of this file can also be found in the folder "board".
+- Pin configuration is described in "stm32_pin_map.xlsx", and is configured at src/chibios182/os/hal/boards/ST_STM32F4_DISCOVERY/board.h. Change this file if you want another pin config.
 
 ### Getting it working
 Utilizing Makefile in root directory. Help output is available, free to run `make` and read it.
@@ -17,7 +18,7 @@ Utilizing Makefile in root directory. Help output is available, free to run `mak
 * Build firmware (given you have corresponding docker image): `make build`
 * Flash firmware `make flash`
 
-### Function disceription
+### Function description
 The code has 3 threads, whose purposes and related functions are described below:
 
 - usbThread: blink the orange LED according to the Serial over USB status; slow blink (1Hz) means no connection, and fast blink (2Hz) means good connection.

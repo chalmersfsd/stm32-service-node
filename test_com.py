@@ -1,7 +1,7 @@
 import serial as sr
 import timeit
 from time import sleep
-ser = sr.Serial('COM3', 9600, timeout=1, parity=sr.PARITY_EVEN, rtscts=1)
+ser = sr.Serial('/dev/ttyACM0', 9600, timeout=1, parity=sr.PARITY_EVEN, rtscts=1)
 
 sleep(1)
 on = True
@@ -11,10 +11,10 @@ writes = 0
 
 def setLightMessage(light, intensity):
 	return 'set|assi_' + light + '|' + str(intensity)
-	
+
 def getStatusMessage():
 	return 'get|status'
-	
+
 def sendMessage(msg):
 	global reads, writes
 	msgOut = str(len(msg)) + ':' + msg + ';'
@@ -45,14 +45,14 @@ def testLight():
 				print("Error")
 	else:
 		print("Not writable, nothing waiting")
-		
+
 def testStatus():
 	if ser.writable() and ser.out_waiting == 0:
 		result, reading = sendMessage(getStatusMessage())
 		print('status request ', result, '---', reading)
 	else:
 		print("Not writable, nothing waiting")
-		
+
 start = timeit.default_timer ()
 while(True):
 	testStatus()
