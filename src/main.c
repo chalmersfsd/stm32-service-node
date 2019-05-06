@@ -66,20 +66,14 @@ static PWMConfig pwmcfg = {
 
 void PWMInit(void)
 {
-  pwmStart(&PWMD4, &pwmcfg);
   pwmStart(&PWMD3, &pwmcfg);
+  pwmStart(&PWMD4, &pwmcfg);
 
-  palSetPadMode(GPIOB, 5, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM3_CH2)
-  palSetPadMode(GPIOB, 6, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH1)
-  palSetPadMode(GPIOB, 7, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH2)
-  palSetPadMode(GPIOB, 8, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH3)
-  palSetPadMode(GPIOB, 9, PAL_MODE_ALTERNATE(2)); //pb5, alternate function 2 (TIM4_CH4)
-
-  pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 0));
-  pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
-  pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
-  pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
-  pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0));
+  pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 0)); // ASSI_RED
+  pwmEnableChannel(&PWMD3, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 0)); // LINEAR ACTUATOR
+  pwmEnableChannel(&PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 0)); // PRESSURE
+  pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0)); // ASSI_GREEN
+  pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 0)); // ASSI_BLUE
 }
 /*
  * Thread working areas

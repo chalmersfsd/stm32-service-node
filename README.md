@@ -32,6 +32,43 @@ The code has 3 threads, whose purposes and related functions are described below
 
 - adcSampleThread: samples the raw Analog measurements.
 
+### Related board config
+#### Control
+ * PB0  - PWM_LINEAR_ACTUATOR       (alternate 2).
+ * PB1  - PWM_PRESSURE              (alternate 2).
+ * PB5  - PWM_ASSI_RED              (alternate 2).
+ * PB6  - PWM_ASSI_GREEN            (alternate 2).
+ * PB7  - PWM_ASSI_BLUE             (alternate 2).
+ * PB8  - CAN1_RX                   (alternate 9).
+ * PB9  - CAN1_TX                   (alternate 9).
+ * PB12 - CAN2_RX                   (alternate 9).
+ * PB13 - CAN2_TX                   (alternate 9).
+ * PD0  - PD_HEART_BEAT             (output pushpull maximum).
+ * PD1  - PD_RACK_RIGHT             (output pushpull maximum).
+ * PD2  - PD_RACK_LEFT              (output pushpull maximum).
+ * PD3  - PD_SERVICE_BREAK          (output pushpull maximum).
+ * PD4  - PD_REDUNDENCY             (output pushpull maximum).
+ * PD6  - PD_SHUTDOWN               (output pushpull maximum).
+ * PD7  - PD_SPARE                  (output pushpull maximum).
+ * PD8  - PD_CLAMP_SET              (output pushpull maximum).
+ * PD9  - PD_COMPRESSOR             (output pushpull maximum).
+ * PD10 - PD_EBS_RELIEF             (output pushpull maximum).
+ * PD11 - PD_EBS_SPEAKER            (output pushpull maximum).
+ * PD12 - PD_FINISHED               (output pushpull maximum).
+ * PD13 - LED3                      (output pushpull maximum).
+ * PD14 - LED5                      (output pushpull maximum).
+ * PD15 - LED6                      (output pushpull maximum).
+ #### Sensor reads
+ * PC0  - EBS_LINE_READ             (analog).
+ * PC1  - EBS_ACTUATOR_READ         (analog).
+ * PC2  - PRESSURE_RAD_READ         (analog).
+ * PC3  - SERVICE_TANK_READ         (analog).
+ * PC4  - POSITION_RACK_READ        (analog).
+ * PC5  - STEARING_POS_READ         (analog).
+ * PC13 - ASMS_READ                 (input pullup).
+ * PC14 - CLAMPED_SENS_READ         (input pullup).
+ * PC15 - EBS_OK_READ               (input pullup).
+
 
 ### To-do
 - Re-calibrate sensor measurements.

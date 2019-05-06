@@ -93,145 +93,38 @@ void decodeMessage(char* buffer, int size)
  */
 int processCommand(char* sensor, char* value)
 {
-  int result = 0;
-  enum {
-    NONE = 0,
-    GPIO = 1,
-    PWM = 2,
-  } type;
-  unsigned int pinID = 0;
+  int intValue = atoi(value);
+  unsigned char bitValue = intValue == 0 ? PAL_LOW : PAL_HIGH;
 
   /*
    * Process sensor
    */
-  if (strstr(sensor, HEART_BEAT))
-  {
-    type = GPIO;
-    pinID = 0;
-  }
-  else if (strstr(sensor, RACK_RIGHT))
-  {
-    type = GPIO;
-    pinID = 1;
-  }
-  else if (strstr(sensor, RACK_LEFT))
-  {
-    type = GPIO;
-    pinID = 2;
-  }
-  else if (strstr(sensor, SERVICE_BREAK))
-  {
-    type = GPIO;
-    pinID = 3;
-  }
-  else if (strstr(sensor, REDUNDENCY))
-  {
-    type = GPIO;
-    pinID = 4;
-  }
-  else if (strstr(sensor, REDUNDENCY))
-  {
-    type = GPIO;
-    pinID = 6;
-  }
-  else if (strstr(sensor, SPARE))
-  {
-    type = GPIO;
-    pinID = 7;
-  }
-  else if (strstr(sensor, CLAMP_SET))
-  {
-    type = GPIO;
-    pinID = 8;
-  }
-  else if (strstr(sensor, COMPRESSOR))
-  {
-    type = GPIO;
-    pinID = 9;
-  }
-  else if (strstr(sensor, EBS_RELIEF))
-  {
-    type = GPIO;
-    pinID = 10;
-  }
-  else if (strstr(sensor, EBS_SPEAKER))
-  {
-    type = GPIO;
-    pinID = 11;
-  }
-  else if (strstr(sensor, FINISHED))
-  {
-    type = GPIO;
-    pinID = 12;
-  }
+  if (strstr(sensor, HEART_BEAT))           palWriteLine(LINE_HEART_BEAT, bitValue);
+  else if (strstr(sensor, RACK_RIGHT))      palWriteLine(LINE_RACK_RIGHT, bitValue);
+  else if (strstr(sensor, RACK_LEFT))       palWriteLine(LINE_RACK_LEFT, bitValue);
+  else if (strstr(sensor, SERVICE_BREAK))   palWriteLine(LINE_SERVICE_BREAK, bitValue);
+  else if (strstr(sensor, REDUNDENCY))      palWriteLine(LINE_REDUNDENCY, bitValue);
+  else if (strstr(sensor, SHUTDOWN))        palWriteLine(LINE_SHUTDOWN, bitValue);
+  else if (strstr(sensor, SPARE))           palWriteLine(LINE_SPARE, bitValue);
+  else if (strstr(sensor, CLAMP_SET))       palWriteLine(LINE_CLAMP_SET, bitValue);
+  else if (strstr(sensor, COMPRESSOR))      palWriteLine(LINE_COMPRESSOR, bitValue);
+  else if (strstr(sensor, EBS_RELIEF))      palWriteLine(LINE_EBS_RELIEF, bitValue);
+  else if (strstr(sensor, EBS_SPEAKER))     palWriteLine(LINE_EBS_SPEAKER, bitValue);
+  else if (strstr(sensor, FINISHED))        palWriteLine(LINE_FINISHED, bitValue);
   else if (strstr(sensor, STEER_SPEED))
-  {
-    type = PWM;
-    pinID = 5;
-  }
+    pwmEnableChannel(&PWMD3, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, intValue));
   else if (strstr(sensor, BRAKE_PRESSURE))
-  {
-    type = PWM;
-    pinID = 6;
-  }
+    pwmEnableChannel(&PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, intValue));
   else if (strstr(sensor, ASSI_BLUE))
-  {
-    type = PWM;
-    pinID = 7;
-  }
+    pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue));
   else if (strstr(sensor, ASSI_RED))
-  {
-    type = PWM;
-    pinID = 8;
-  }
+    pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, intValue));
   else if (strstr(sensor, ASSI_GREEN))
-  {
-    type = PWM;
-    pinID = 9;
-  }
+    pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue));
   else
-  {
-    result = -1;
-  }
+    return -1;
 
-  if (result == 0)
-  {
-    /*
-     * Process value to set for sensor
-     */
-    int intValue = atoi(value);
-    unsigned char pinValue = intValue == 0 ? PAL_LOW : PAL_HIGH;
-
-    /*
-     * Execute command
-     */
-    switch(type)
-    {
-      case GPIO:
-        palWritePad(GPIOD, pinID, pinValue);
-        break;
-      case PWM:
-        switch(pinID)
-        {
-          case 5: // linear actuator steer speed
-            pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, intValue)); break;
-          case 6: // pressure regulator
-            pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue)); break;
-          case 7: // ASSI blue
-            pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue)); break;
-          case 8: // ASSI red
-            pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue)); break;
-          case 9: // ASSI green
-            pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, intValue)); break;
-        }
-        break;
-      default:
-        result = -1;
-        break;
-    }
-  }
-
-  return result;
+  return 0;
 }
 
 /*
@@ -243,16 +136,16 @@ size_t processStatus(void)
 {
   size_t payloadLength = 0;
   //Analog input
-  uint32_t ebs_line = (uint32_t)(samples[0] + samples[6] + samples[12] + samples[18]) / 4; //PC0
-  uint32_t ebs_actuator = (uint32_t)(samples[1] + samples[7] + samples[13] + samples[19]) / 4; //PC1
-  uint32_t pressure_rag = (uint32_t)(samples[2] + samples[8] + samples[14] + samples[20]) / 4; //PC2
-  uint32_t service_tank = (uint32_t)(samples[3] + samples[9] + samples[15] + samples[21]) / 4; //PC3
-  uint32_t position_rack = (uint32_t)(samples[4] + samples[10] + samples[16] + samples[22]) / 4; //PC4
-  uint32_t steer_pos = (uint32_t)(samples[5] + samples[11] + samples[17] + samples[23]) / 4; //PC5
+  uint32_t ebs_line =       (uint32_t)(samples[0] + samples[6] + samples[12] + samples[18]) / 4; //PC0
+  uint32_t ebs_actuator =   (uint32_t)(samples[1] + samples[7] + samples[13] + samples[19]) / 4; //PC1
+  uint32_t pressure_rag =   (uint32_t)(samples[2] + samples[8] + samples[14] + samples[20]) / 4; //PC2
+  uint32_t service_tank =   (uint32_t)(samples[3] + samples[9] + samples[15] + samples[21]) / 4; //PC3
+  uint32_t position_rack =  (uint32_t)(samples[4] + samples[10] + samples[16] + samples[22]) / 4; //PC4
+  uint32_t steer_pos =      (uint32_t)(samples[5] + samples[11] + samples[17] + samples[23]) / 4; //PC5
   //Digital input
-  bool asms = palReadPad(GPIOC, 13); //PC13
-  bool clamped_sensor = palReadPad(GPIOC, 14); //PC14
-  bool ebs_ok = palReadPad(GPIOC, 15); //PC15
+  bool asms = palReadLine(LINE_ASMS_READ);
+  bool clamped_sensor = palReadLine(LINE_CLAMPED_SENS_READ);
+  bool ebs_ok = palReadLine(LINE_EBS_OK_READ);
 
   payloadLength = sprintf(writeBuffer, "get|status|ACK"
                        "|ebs_line|%ld|ebs_actuator|%ld|pressure_rag|%ld"
