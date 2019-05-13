@@ -216,17 +216,17 @@
         Alternate="2" />
       <pin8
         ID="CAN1_RX"
-        Type="OpenDrain"
+        Type="PushPull"
         Level="High"
-        Speed="Maximum"
+        Speed="High"
         Resistor="Floating"
         Mode="Alternate"
         Alternate="9" />
       <pin9
         ID="CAN1_TX"
-        Type="OpenDrain"
+        Type="PushPull"
         Level="High"
-        Speed="Maximum"
+        Speed="High"
         Resistor="Floating"
         Mode="Alternate"
         Alternate="9" />

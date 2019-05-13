@@ -471,8 +471,8 @@
                                      PIN_OTYPE_PUSHPULL(GPIOB_PWM_ASSI_RED) |\
                                      PIN_OTYPE_PUSHPULL(GPIOB_PWM_ASSI_GREEN) |\
                                      PIN_OTYPE_PUSHPULL(GPIOB_PWM_ASSI_BLUE) |\
-                                     PIN_OTYPE_OPENDRAIN(GPIOB_CAN1_RX) |   \
-                                     PIN_OTYPE_OPENDRAIN(GPIOB_CAN1_TX) |   \
+                                     PIN_OTYPE_PUSHPULL(GPIOB_CAN1_RX) |    \
+                                     PIN_OTYPE_PUSHPULL(GPIOB_CAN1_TX) |    \
                                      PIN_OTYPE_PUSHPULL(GPIOB_CLK_IN) |     \
                                      PIN_OTYPE_PUSHPULL(GPIOB_PIN11) |      \
                                      PIN_OTYPE_PUSHPULL(GPIOB_CAN2_RX) |    \
@@ -487,8 +487,8 @@
                                      PIN_OSPEED_HIGH(GPIOB_PWM_ASSI_RED) |  \
                                      PIN_OSPEED_HIGH(GPIOB_PWM_ASSI_GREEN) |\
                                      PIN_OSPEED_HIGH(GPIOB_PWM_ASSI_BLUE) | \
-                                     PIN_OSPEED_HIGH(GPIOB_CAN1_RX) |       \
-                                     PIN_OSPEED_HIGH(GPIOB_CAN1_TX) |       \
+                                     PIN_OSPEED_MEDIUM(GPIOB_CAN1_RX) |     \
+                                     PIN_OSPEED_MEDIUM(GPIOB_CAN1_TX) |     \
                                      PIN_OSPEED_HIGH(GPIOB_CLK_IN) |        \
                                      PIN_OSPEED_HIGH(GPIOB_PIN11) |         \
                                      PIN_OSPEED_HIGH(GPIOB_CAN2_RX) |       \
