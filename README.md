@@ -1,14 +1,15 @@
 # stm32-service-node
 
 ### How it works
-- This is firmware for STM32F4 to communicate with the new microservices of CFSD19 over USB serial. This firmware is written in ChibiOS 2.6.5. The service code can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development
-- STM32 receives GPIO/PWM requests from Docker side, and execute these requests. It also continuously sends the analog/digital measurements to Docker side via serial-over-usb connection. The send/receive functions are independent from each other.
+- This is firmware for STM32F4 to communicate with the new microservices of CFSD over USB serial. The service code can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development
+- STM32 receives GPIO/PWM requests from Docker side, and execute these requests.
+- It it request-response communication where Docker side should send requests and STM would respond to them.
 
 ### Dependencies
-- ChibiOS 2.6.5. This is included in the repository.
-- STM32F4 running a serial-over-usb connection, and is connected to host machine, and appears as /dev/ttyACM0.
+- ChibiOS 18.2. This is included in the repository.
+- STM32F4 running a serial-over-usb connection (micro-usb), drivers for the board installed.
 - Dockerized microservice running OpenDLV. This service can be found at https://github.com/chalmersfsd/opendlv-device-stm32-lynx/tree/development.
-- Pin configuration is described in "stm32_pin_map.xlsx", and is configured at ChibiOS_2.6.5/board/ST_STM32F4_DISCOVERY/board.h. Change this file if you want another pin config. A copy of this file can also be found in the folder "board".
+- Pin configuration is described in "stm32_pin_map.xlsx", and is configured at src/chibios182/os/hal/boards/ST_STM32F4_DISCOVERY/board.h. Change this file if you want another pin config.
 
 ### Getting it working
 Utilizing Makefile in root directory. Help output is available, free to run `make` and read it.
@@ -17,8 +18,8 @@ Utilizing Makefile in root directory. Help output is available, free to run `mak
 * Build firmware (given you have corresponding docker image): `make build`
 * Flash firmware `make flash`
 
-### Function disceription
-The code has 4 threads, whose purposes and related functions are described below:
+### Function description
+The code has 3 threads, whose purposes and related functions are described below:
 
 - usbThread: blink the orange LED according to the Serial over USB status; slow blink (1Hz) means no connection, and fast blink (2Hz) means good connection.
 
@@ -31,16 +32,44 @@ The code has 4 threads, whose purposes and related functions are described below
 
 - adcSampleThread: samples the raw Analog measurements.
 
-### Known issue
-1) An unknown bug caused the first byte in the sent bytes to appear at the beginning of the received bytes. This only happens when both read & write threads are executed. This prevents the reading thread to succesfully extract the netstring messages (since strtol() only works for strings with leading white spaces). A temporary fix is to add an additional white space character at the begining of the sent bytes. This fix has worked so far with all of the signals included.
-
-2) Originally the measurements were sent in a single message, i.e: "status|ebs_line|1234|ebs_actuator|1234", but sometimes this cause the stm to not be able to receive & decode requests. A fix of this is to split the original message into several messages, each containing one measurement.
+### Related board config
+#### Control
+ * PB0  - PWM_LINEAR_ACTUATOR       (alternate 2).
+ * PB1  - PWM_PRESSURE              (alternate 2).
+ * PB5  - PWM_ASSI_RED              (alternate 2).
+ * PB6  - PWM_ASSI_GREEN            (alternate 2).
+ * PB7  - PWM_ASSI_BLUE             (alternate 2).
+ * PB8  - CAN1_RX                   (alternate 9).
+ * PB9  - CAN1_TX                   (alternate 9).
+ * PB12 - CAN2_RX                   (alternate 9).
+ * PB13 - CAN2_TX                   (alternate 9).
+ * PD0  - PD_HEART_BEAT             (output pushpull maximum).
+ * PD1  - PD_RACK_RIGHT             (output pushpull maximum).
+ * PD2  - PD_RACK_LEFT              (output pushpull maximum).
+ * PD3  - PD_SERVICE_BREAK          (output pushpull maximum).
+ * PD4  - PD_REDUNDENCY             (output pushpull maximum).
+ * PD6  - PD_SHUTDOWN               (output pushpull maximum).
+ * PD7  - PD_SPARE                  (output pushpull maximum).
+ * PD8  - PD_CLAMP_SET              (output pushpull maximum).
+ * PD9  - PD_COMPRESSOR             (output pushpull maximum).
+ * PD10 - PD_EBS_RELIEF             (output pushpull maximum).
+ * PD11 - PD_EBS_SPEAKER            (output pushpull maximum).
+ * PD12 - PD_FINISHED               (output pushpull maximum).
+ * PD13 - LED3                      (output pushpull maximum).
+ * PD14 - LED5                      (output pushpull maximum).
+ * PD15 - LED6                      (output pushpull maximum).
+ #### Sensor reads
+ * PC0  - EBS_LINE_READ             (analog).
+ * PC1  - EBS_ACTUATOR_READ         (analog).
+ * PC2  - PRESSURE_RAD_READ         (analog).
+ * PC3  - SERVICE_TANK_READ         (analog).
+ * PC4  - POSITION_RACK_READ        (analog).
+ * PC5  - STEARING_POS_READ         (analog).
+ * PC13 - ASMS_READ                 (input pullup).
+ * PC14 - CLAMPED_SENS_READ         (input pullup).
+ * PC15 - EBS_OK_READ               (input pullup).
 
 
 ### To-do
 - Re-calibrate sensor measurements.
-- Analize respons time, especially to critical signals (heart_beat).
-- Re-organize code files. Currently most codes are written in one single main.c file.
-- Dockerize the build-flash procedure
-- Adjust indentations for better code.
 - Continue debugging to find possible bugs

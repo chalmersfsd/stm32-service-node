@@ -3,7 +3,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common make && \
     add-apt-repository ppa:team-gcc-arm-embedded/ppa && \
     apt-get update && \
-    apt-get install -y gcc-arm-none-eabi
+    apt-get install -y gcc-arm-embedded
 
 VOLUME /sources
 WORKDIR /sources
