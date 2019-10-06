@@ -1,0 +1,6 @@
+FROM alpine:latest
+RUN apk update && \
+    apk add stlink
+
+VOLUME /binaries
+ENTRYPOINT ["st-flash", "write", "/binaries/formula_node.bin", "0x8000000"]
